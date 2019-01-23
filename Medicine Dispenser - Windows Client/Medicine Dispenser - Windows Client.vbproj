@@ -92,6 +92,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Enums\Medicine.vb" />
+    <Compile Include="Classes\Objects\Doctor.vb" />
+    <Compile Include="Classes\Objects\Medication.vb" />
+    <Compile Include="Classes\Objects\Patient.vb" />
     <Compile Include="Dialogs\frm_Login.Designer.vb">
       <DependentUpon>frm_Login.vb</DependentUpon>
     </Compile>
