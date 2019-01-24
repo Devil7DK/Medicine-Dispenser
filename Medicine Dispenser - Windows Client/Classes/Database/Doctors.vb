@@ -14,7 +14,7 @@ Namespace Database
             Dim Connection As MySqlConnection = GetConnection()
 
             Try
-                Dim CommandString As String = String.Format("SELECT [id],[username],[name] FROM {0}", TableName)
+                Dim CommandString As String = String.Format("SELECT id,username,name FROM {0};", TableName)
                 If Connection.State = ConnectionState.Closed Then Connection.Open()
 
                 Using Command As New MySqlCommand(CommandString, Connection)
