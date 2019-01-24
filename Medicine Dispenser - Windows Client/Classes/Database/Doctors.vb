@@ -23,7 +23,7 @@ Namespace Database
                     End Using
                 End Using
             Catch ex As Exception
-                MsgBox(String.Format("Unable to fetch doctors data from server.{0}{0}Additional Information:{0}{1}", vbNewLine, ex.Message), MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
+                DevExpress.XtraEditors.XtraMessageBox.Show(String.Format("Unable to fetch doctors data from server.{0}{0}Additional Information:{0}{1}", vbNewLine, ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
 
             Return R
