@@ -92,6 +92,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Database\Common.vb" />
+    <Compile Include="Classes\Database\Doctors.vb" />
     <Compile Include="Classes\Enums\Medicine.vb" />
     <Compile Include="Classes\Objects\Doctor.vb" />
     <Compile Include="Classes\Objects\Medication.vb" />
