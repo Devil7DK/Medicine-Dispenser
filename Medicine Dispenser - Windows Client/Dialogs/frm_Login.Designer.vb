@@ -29,6 +29,8 @@ Partial Class frm_Login
         Me.btn_Login = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_ServerSettings = New DevExpress.XtraEditors.SimpleButton()
         Me.txt_Username = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LoginWorker = New System.ComponentModel.BackgroundWorker()
+        Me.ProgressPanel = New DevExpress.XtraWaitForm.ProgressPanel()
         CType(Me.txt_Password.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_Username.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -53,11 +55,12 @@ Partial Class frm_Login
         '
         Me.txt_Password.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_Password.EnterMoveNextControl = True
         Me.txt_Password.Location = New System.Drawing.Point(73, 38)
         Me.txt_Password.Name = "txt_Password"
         Me.txt_Password.Properties.UseSystemPasswordChar = True
         Me.txt_Password.Size = New System.Drawing.Size(307, 20)
-        Me.txt_Password.TabIndex = 3
+        Me.txt_Password.TabIndex = 1
         '
         'btn_Login
         '
@@ -66,7 +69,7 @@ Partial Class frm_Login
         Me.btn_Login.Location = New System.Drawing.Point(305, 64)
         Me.btn_Login.Name = "btn_Login"
         Me.btn_Login.Size = New System.Drawing.Size(75, 46)
-        Me.btn_Login.TabIndex = 4
+        Me.btn_Login.TabIndex = 2
         Me.btn_Login.Text = "Login"
         '
         'btn_ServerSettings
@@ -77,22 +80,44 @@ Partial Class frm_Login
         Me.btn_ServerSettings.Name = "btn_ServerSettings"
         Me.btn_ServerSettings.Size = New System.Drawing.Size(91, 46)
         Me.btn_ServerSettings.TabIndex = 5
+        Me.btn_ServerSettings.TabStop = False
         Me.btn_ServerSettings.Text = "Server" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Settings"
         '
         'txt_Username
         '
+        Me.txt_Username.EnterMoveNextControl = True
         Me.txt_Username.Location = New System.Drawing.Point(73, 12)
         Me.txt_Username.Name = "txt_Username"
         Me.txt_Username.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txt_Username.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.txt_Username.Size = New System.Drawing.Size(307, 20)
-        Me.txt_Username.TabIndex = 6
+        Me.txt_Username.TabIndex = 0
+        '
+        'LoginWorker
+        '
+        '
+        'ProgressPanel
+        '
+        Me.ProgressPanel.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel.BarAnimationElementThickness = 2
+        Me.ProgressPanel.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.ProgressPanel.Caption = "Please Wait"
+        Me.ProgressPanel.ContentAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ProgressPanel.Description = "Logging In..."
+        Me.ProgressPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ProgressPanel.Location = New System.Drawing.Point(0, 0)
+        Me.ProgressPanel.Name = "ProgressPanel"
+        Me.ProgressPanel.Size = New System.Drawing.Size(392, 122)
+        Me.ProgressPanel.TabIndex = 6
+        Me.ProgressPanel.Visible = False
         '
         'frm_Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(392, 122)
+        Me.Controls.Add(Me.ProgressPanel)
         Me.Controls.Add(Me.txt_Username)
         Me.Controls.Add(Me.btn_ServerSettings)
         Me.Controls.Add(Me.btn_Login)
@@ -104,6 +129,7 @@ Partial Class frm_Login
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frm_Login"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
         CType(Me.txt_Password.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_Username.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -118,4 +144,6 @@ Partial Class frm_Login
     Friend WithEvents btn_Login As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_ServerSettings As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents txt_Username As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents LoginWorker As System.ComponentModel.BackgroundWorker
+    Friend WithEvents ProgressPanel As DevExpress.XtraWaitForm.ProgressPanel
 End Class
