@@ -39,7 +39,7 @@ Namespace Database
             Dim ID As Integer = Reader.Item("id")
             Dim Name As String = Reader.Item("name")
             Dim Username As String = Reader.Item("username")
-            Return New Doctor(ID, Name, Username)
+            Return New Doctor(ID, Username, Name)
         End Function
 #End Region
 
