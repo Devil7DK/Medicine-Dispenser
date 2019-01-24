@@ -28,7 +28,7 @@ Namespace Utils
 
         Private m_des As New TripleDESCryptoServiceProvider
         Private m_utf8 As New UTF8Encoding
-        Private m_key() As Byte = System.Text.Encoding.ASCII.GetBytes("M£DiCin£Di$p£ncer")
+        Private m_key() As Byte = System.Text.Encoding.ASCII.GetBytes("D3^!l$3M£DiCin£Di$p£ncer")
         Private m_iv() As Byte = {8, 7, 6, 5, 4, 3, 2, 1}
 
         Public Function EncryptBytes(ByVal input() As Byte) As Byte()
