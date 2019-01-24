@@ -5,7 +5,7 @@
         txt_ServerName.Text = My.Settings.ServerAddresss
         txt_DatabaseName.Text = My.Settings.DatabaseName
         txt_Username.Text = My.Settings.Username
-        txt_Password.Text = My.Settings.Password
+        txt_Password.Text = Utils.Encryption.DecryptString(My.Settings.Password)
     End Sub
 #End Region
 
@@ -14,7 +14,7 @@
         My.Settings.ServerAddresss = txt_ServerName.Text
         My.Settings.DatabaseName = txt_DatabaseName.Text
         My.Settings.Username = txt_Username.Text
-        My.Settings.Password = txt_Password.Text
+        My.Settings.Password = Utils.Encryption.EncryptString(txt_Password.Text)
         My.Settings.Save()
 
         DialogResult = DialogResult.OK
