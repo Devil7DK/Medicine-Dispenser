@@ -25,12 +25,12 @@ Partial Class frm_Login
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_Login))
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
-        Me.txt_Username = New DevExpress.XtraEditors.TextEdit()
         Me.txt_Password = New DevExpress.XtraEditors.TextEdit()
         Me.btn_Login = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_ServerSettings = New DevExpress.XtraEditors.SimpleButton()
-        CType(Me.txt_Username.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txt_Username = New DevExpress.XtraEditors.ComboBoxEdit()
         CType(Me.txt_Password.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_Username.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelControl1
@@ -48,15 +48,6 @@ Partial Class frm_Login
         Me.LabelControl2.Size = New System.Drawing.Size(53, 13)
         Me.LabelControl2.TabIndex = 1
         Me.LabelControl2.Text = "Password :"
-        '
-        'txt_Username
-        '
-        Me.txt_Username.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_Username.Location = New System.Drawing.Point(73, 12)
-        Me.txt_Username.Name = "txt_Username"
-        Me.txt_Username.Size = New System.Drawing.Size(307, 20)
-        Me.txt_Username.TabIndex = 2
         '
         'txt_Password
         '
@@ -88,15 +79,24 @@ Partial Class frm_Login
         Me.btn_ServerSettings.TabIndex = 5
         Me.btn_ServerSettings.Text = "Server" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Settings"
         '
+        'txt_Username
+        '
+        Me.txt_Username.Location = New System.Drawing.Point(73, 12)
+        Me.txt_Username.Name = "txt_Username"
+        Me.txt_Username.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txt_Username.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.txt_Username.Size = New System.Drawing.Size(307, 20)
+        Me.txt_Username.TabIndex = 6
+        '
         'frm_Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(392, 122)
+        Me.Controls.Add(Me.txt_Username)
         Me.Controls.Add(Me.btn_ServerSettings)
         Me.Controls.Add(Me.btn_Login)
         Me.Controls.Add(Me.txt_Password)
-        Me.Controls.Add(Me.txt_Username)
         Me.Controls.Add(Me.LabelControl2)
         Me.Controls.Add(Me.LabelControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -105,8 +105,8 @@ Partial Class frm_Login
         Me.MinimizeBox = False
         Me.Name = "frm_Login"
         Me.Text = "Login"
-        CType(Me.txt_Username.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txt_Password.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_Username.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -114,8 +114,8 @@ Partial Class frm_Login
 
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents txt_Username As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txt_Password As DevExpress.XtraEditors.TextEdit
     Friend WithEvents btn_Login As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_ServerSettings As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents txt_Username As DevExpress.XtraEditors.ComboBoxEdit
 End Class
