@@ -38,9 +38,9 @@ Namespace Database
         Private Shared Function Read(ByVal Reader As MySqlDataReader, ByVal Doctors As List(Of Doctor)) As Patient
             Dim ID As Integer = Reader.Item("id")
             Dim Name As String = Reader.Item("name").ToString
-            Dim Diseases As String = Reader.Item("diseases").ToString
-            Dim Allergies As String = Reader.Item("allergies").ToString
-            Dim Medication As String = Reader.Item("medication").ToString
+            Dim Diseases As Byte() = Reader.Item("diseases")
+            Dim Allergies As Byte() = Reader.Item("allergies")
+            Dim Medication As Byte() = Reader.Item("medication")
 
             Dim DoctorID As Integer = -1
             Dim Doctor As Doctor = Nothing
