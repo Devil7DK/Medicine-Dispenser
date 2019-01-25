@@ -9,7 +9,7 @@ Namespace Database
 #End Region
 
 #Region "Public Functions"
-        Public Shared Function FetchAll() As List(Of Patient)
+        Public Shared Function FetchAll(ByVal Doctors As List(Of Doctor)) As List(Of Patient)
             Dim R As New List(Of Patient)
             Dim Connection As MySqlConnection = GetConnection()
 
@@ -20,7 +20,7 @@ Namespace Database
                 Using Command As New MySqlCommand(CommandString, Connection)
                     Using Reader As MySqlDataReader = Command.ExecuteReader
                         While Reader.Read
-                            R.Add(Read(Reader))
+                            R.Add(Read(Reader, Doctors))
                         End While
                     End Using
                 End Using
@@ -35,13 +35,19 @@ Namespace Database
 #End Region
 
 #Region "Private Functions"
-        Private Shared Function Read(ByVal Reader As MySqlDataReader) As Patient
+        Private Shared Function Read(ByVal Reader As MySqlDataReader, ByVal Doctors As List(Of Doctor)) As Patient
             Dim ID As Integer = Reader.Item("id")
             Dim Name As String = Reader.Item("name").ToString
             Dim Diseases As String = Reader.Item("diseases").ToString
             Dim Allergies As String = Reader.Item("allergies").ToString
             Dim Medication As String = Reader.Item("medication").ToString
-            Return New Patient(ID, Name, Diseases, Allergies, Medication)
+
+            Dim DoctorID As Integer = -1
+            Dim Doctor As Doctor = Nothing
+            If Doctors IsNot Nothing AndAlso Not String.IsNullOrEmpty(Reader.Item("doctor").ToString) AndAlso Integer.TryParse(Reader.Item("doctor").ToString, DoctorID) Then
+                Doctor = Doctors.Find(Function(c) c.ID = DoctorID)
+            End If
+            Return New Patient(ID, Name, Diseases, Allergies, Medication, Doctor)
         End Function
 #End Region
 
