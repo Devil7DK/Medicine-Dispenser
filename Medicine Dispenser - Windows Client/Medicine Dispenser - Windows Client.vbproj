@@ -102,6 +102,7 @@
     <Compile Include="Classes\Objects\Doctor.vb" />
     <Compile Include="Classes\Objects\Medication.vb" />
     <Compile Include="Classes\Objects\Patient.vb" />
+    <Compile Include="Classes\Utils\Compression.vb" />
     <Compile Include="Classes\Utils\Encryption.vb" />
     <Compile Include="Classes\Utils\Serializer.vb" />
     <Compile Include="Dialogs\frm_Login.Designer.vb">
