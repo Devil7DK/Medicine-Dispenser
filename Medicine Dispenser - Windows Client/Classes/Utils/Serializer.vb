@@ -3,6 +3,10 @@
 Namespace Utils
     Public Module Serializer
 
+        Function FromZXML(Of T)(ByVal XML As Byte()) As T
+            Return FromXML(Of T)(Compression.UnZip(XML))
+        End Function
+
         Function FromXML(Of T)(ByVal XML As String) As T
             Dim R As T = Nothing
             Dim XS As New XmlSerializer(GetType(T))
@@ -14,6 +18,10 @@ Namespace Utils
                 End Try
             End Using
             Return R
+        End Function
+
+        Function ToZXML(Of T)(ByVal Obj As T) As Byte()
+            Return Compression.Zip(ToXML(Of T)(Obj))
         End Function
 
         Function ToXML(Of T)(ByVal Obj As T) As String
