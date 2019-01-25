@@ -7,20 +7,23 @@
         Property Diseases As List(Of String)
         Property Allergies As List(Of String)
         Property Medication As List(Of Medication)
+        Property Doctor As Doctor
 #End Region
 
 #Region "Constructors"
-        Sub New(ByVal ID As Integer, ByVal Name As String, ByVal Diseases As List(Of String), ByVal Allergies As List(Of String), ByVal Medication As List(Of Medication))
+        Sub New(ByVal ID As Integer, ByVal Name As String, ByVal Diseases As List(Of String), ByVal Allergies As List(Of String), ByVal Medication As List(Of Medication), ByVal Doctor As Doctor)
             Me.ID = ID
             Me.Name = Name
             Me.Diseases = Diseases
             Me.Allergies = Allergies
             Me.Medication = Medication
+            Me.Doctor = Doctor
         End Sub
 
-        Sub New(ByVal ID As Integer, ByVal Name As String, ByVal Diseases As String, ByVal Allergies As String, ByVal Medication As String)
+        Sub New(ByVal ID As Integer, ByVal Name As String, ByVal Diseases As String, ByVal Allergies As String, ByVal Medication As String, ByVal Doctor As Doctor)
             Me.ID = ID
             Me.Name = Name
+            Me.Doctor = Doctor
 
             If Diseases.Trim <> "" Then
                 Me.Diseases = Utils.Serializer.FromXML(Of List(Of String))(Diseases)
