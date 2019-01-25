@@ -20,21 +20,21 @@
             Me.Doctor = Doctor
         End Sub
 
-        Sub New(ByVal ID As Integer, ByVal Name As String, ByVal Diseases As String, ByVal Allergies As String, ByVal Medication As String, ByVal Doctor As Doctor)
+        Sub New(ByVal ID As Integer, ByVal Name As String, ByVal Diseases As Byte(), ByVal Allergies As Byte(), ByVal Medication As Byte(), ByVal Doctor As Doctor)
             Me.ID = ID
             Me.Name = Name
             Me.Doctor = Doctor
 
-            If Diseases.Trim <> "" Then
-                Me.Diseases = Utils.Serializer.FromXML(Of List(Of String))(Diseases)
+            If Diseases IsNot Nothing Then
+                Me.Diseases = Utils.Serializer.FromZXML(Of List(Of String))(Diseases)
             End If
 
-            If Allergies.Trim <> "" Then
-                Me.Allergies = Utils.Serializer.FromXML(Of List(Of String))(Allergies)
+            If Allergies IsNot Nothing Then
+                Me.Allergies = Utils.Serializer.FromZXML(Of List(Of String))(Allergies)
             End If
 
-            If Medication.Trim <> "" Then
-                Me.Medication = Utils.Serializer.FromXML(Of List(Of Medication))(Medication)
+            If Medication IsNot Nothing Then
+                Me.Medication = Utils.Serializer.FromZXML(Of List(Of Medication))(Medication)
             End If
 
             If Me.Diseases Is Nothing Then Me.Diseases = New List(Of String)
