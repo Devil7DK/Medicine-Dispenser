@@ -52,7 +52,7 @@
         Me.Invoke(Sub() gc_Doctors.DataSource = Doctors)
 
         UpdateProgress("Loading Patients Data...")
-        Dim Patients As List(Of Objects.Patient) = Database.Patients.FetchAll
+        Dim Patients As List(Of Objects.Patient) = Database.Patients.FetchAll(Doctors)
         Me.Invoke(Sub() gc_Patients.DataSource = Patients)
 
         Me.Invoke(Sub()
