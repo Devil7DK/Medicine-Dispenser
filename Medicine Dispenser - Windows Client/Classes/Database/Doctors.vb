@@ -61,6 +61,65 @@ Namespace Database
 
             Return R
         End Function
+
+        Public Shared Function [New](ByVal Name As String, ByVal Username As String, ByVal Password As String) As Doctor
+            Dim R As Doctor = Nothing
+            Dim Connection As MySqlConnection = GetConnection()
+
+            Try
+                Dim CommandString As String = String.Format("INSERT INTO {0} (name,username,password) VALUES(@name,@username,@password);SELECT LAST_INSERT_ID();", TableName)
+                If Connection.State = ConnectionState.Closed Then Connection.Open()
+
+                Using Command As New MySqlCommand(CommandString, Connection)
+                    Command.Parameters.AddWithValue("@name", Name)
+                    Command.Parameters.AddWithValue("@username", Username)
+                    Command.Parameters.AddWithValue("@password", Utils.EncryptString(Password))
+
+                    Dim ID As Integer = Command.ExecuteScalar
+                    If ID > 0 Then
+                        R = New Doctor(ID, Username, Name)
+                    Else
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Unknown error while inserting doctor.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    End If
+                End Using
+            Catch ex As Exception
+                DevExpress.XtraEditors.XtraMessageBox.Show("Error while inserting doctor." & vbNewLine & ex.Message, "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
+            Return R
+        End Function
+
+        Public Shared Function Update(ByVal ID As Integer, ByVal Username As String, ByVal Name As String, ByVal Password As String) As Boolean
+            Dim R As Boolean = False
+            Dim Connection As MySqlConnection = GetConnection()
+
+            Try
+                Dim CommandString As String = String.Format("UPDATE {0} SET name=@name,username=@username{1} WHERE id=@id;", TableName, If(Password <> "", ",password=@password", ""))
+                If Connection.State = ConnectionState.Closed Then Connection.Open()
+
+                Using Command As New MySqlCommand(CommandString, Connection)
+                    Command.Parameters.AddWithValue("@id", ID)
+                    Command.Parameters.AddWithValue("@name", Name)
+                    Command.Parameters.AddWithValue("@username", Username)
+                    If Password <> "" Then Command.Parameters.AddWithValue("@password", Utils.EncryptString(Password))
+
+                    Dim Result As Integer = Command.ExecuteNonQuery
+                    If Result = 1 Then
+                        R = True
+                    Else
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Unknown error while updating doctor.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    End If
+                End Using
+            Catch ex As Exception
+                DevExpress.XtraEditors.XtraMessageBox.Show("Error while updating doctor." & vbNewLine & ex.Message, "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
+            Return R
+        End Function
+
+        Public Shared Function Remove(ByVal ID As Integer, ByVal CloseConnection As Boolean) As Boolean
+            Return RemoveItem(TableName, ID, CloseConnection)
+        End Function
 #End Region
 
 #Region "Private Functions"
