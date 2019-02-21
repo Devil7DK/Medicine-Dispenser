@@ -1,4 +1,5 @@
-﻿Imports Medicine_Dispenser___Windows_Client.Objects
+﻿Imports System.ComponentModel
+Imports Medicine_Dispenser___Windows_Client.Objects
 Imports MySql.Data.MySqlClient
 
 Namespace Database
@@ -33,12 +34,12 @@ Namespace Database
             Return R
         End Function
 
-        Public Shared Function [New](ByVal Name As String, ByVal Diseases As List(Of String), ByVal Allergies As List(Of String), ByVal Medication As List(Of Medication), ByVal Doctor As Doctor) As Patient
+        Public Shared Function [New](ByVal Name As String, ByVal Diseases As BindingList(Of String), ByVal Allergies As BindingList(Of String), ByVal Medication As BindingList(Of Medication), ByVal Doctor As Doctor) As Patient
             Dim R As Patient = Nothing
             Dim Connection As MySqlConnection = GetConnection()
 
             Try
-                Dim CommandString As String = String.Format("INSERT INTO {0} (name,diseases,allergies,medication,doctor) VALUES(@name,@diseases,@allergies,@medication,@doctor);SELECT SCOPE_IDENTITY();", TableName)
+                Dim CommandString As String = String.Format("INSERT INTO {0} (name,diseases,allergies,medication,doctor) VALUES(@name,@diseases,@allergies,@medication,@doctor);SELECT LAST_INSERT_ID();", TableName)
                 If Connection.State = ConnectionState.Closed Then Connection.Open()
 
                 Using Command As New MySqlCommand(CommandString, Connection)
@@ -90,6 +91,10 @@ Namespace Database
             End Try
 
             Return R
+        End Function
+
+        Public Shared Function Remove(ByVal ID As Integer, ByVal CloseConnection As Boolean) As Boolean
+            Return RemoveItem(TableName, ID, CloseConnection)
         End Function
 #End Region
 
