@@ -107,6 +107,12 @@
     <Compile Include="Classes\Utils\Compression.vb" />
     <Compile Include="Classes\Utils\Encryption.vb" />
     <Compile Include="Classes\Utils\Serializer.vb" />
+    <Compile Include="Dialogs\frm_Doctor.Designer.vb">
+      <DependentUpon>frm_Doctor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frm_Doctor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Dialogs\frm_Login.Designer.vb">
       <DependentUpon>frm_Login.vb</DependentUpon>
     </Compile>
@@ -157,6 +163,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Dialogs\frm_Doctor.resx">
+      <DependentUpon>frm_Doctor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frm_Login.resx">
       <DependentUpon>frm_Login.vb</DependentUpon>
     </EmbeddedResource>
