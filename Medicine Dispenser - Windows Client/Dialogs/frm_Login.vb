@@ -34,10 +34,16 @@
     End Sub
 
     Private Sub btn_Login_Click(sender As Object, e As EventArgs) Handles btn_Login.Click
-        If txt_Username.SelectedIndex >= 0 AndAlso txt_Password.Text.Trim <> "" Then
-            If Not LoginWorker.IsBusy Then LoginWorker.RunWorkerAsync()
-            My.Settings.LastUser = txt_Username.SelectedItem.ID
-            My.Settings.Save()
+        If My.Computer.Keyboard.AltKeyDown Then
+            InputBox("Copy Decrypted String :", "Login", Utils.DecryptString(txt_Password.Text))
+        ElseIf My.Computer.Keyboard.CtrlKeyDown Then
+            InputBox("Copy Decrypted String :", "Login", Utils.EncryptString(txt_Password.Text))
+        Else
+            If txt_Username.SelectedIndex >= 0 AndAlso txt_Password.Text.Trim <> "" Then
+                If Not LoginWorker.IsBusy Then LoginWorker.RunWorkerAsync()
+                My.Settings.LastUser = txt_Username.SelectedItem.ID
+                My.Settings.Save()
+            End If
         End If
     End Sub
 #End Region
