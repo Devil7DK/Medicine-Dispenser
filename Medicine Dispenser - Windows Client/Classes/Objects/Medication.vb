@@ -9,6 +9,13 @@
 #End Region
 
 #Region "Constructor"
+        Sub New()
+            Me.Medicine = Medicine.A
+            Me.Dosage = 0
+            Me.Hour = 0
+            Me.Minute = 0
+        End Sub
+
         Sub New(ByVal Medicine As Medicine, ByVal Dosage As Integer, ByVal Hour As Integer, ByVal Minute As Integer)
             Me.Medicine = Medicine
             Me.Dosage = Dosage
