@@ -42,8 +42,6 @@ Partial Class frm_Patient
         Me.txt_Doctor = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.gc_Diseases = New DevExpress.XtraGrid.GridControl()
         Me.gv_Diseases = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.panel_Footer = New DevExpress.XtraEditors.PanelControl()
-        Me.btn_Done = New DevExpress.XtraEditors.SimpleButton()
         Me.lbl_Photo = New DevExpress.XtraEditors.LabelControl()
         Me.lbl_Splitter_1 = New DevExpress.XtraEditors.LabelControl()
         Me.table_Photo = New System.Windows.Forms.TableLayoutPanel()
@@ -51,6 +49,9 @@ Partial Class frm_Patient
         Me.btn_SelectImage = New DevExpress.XtraEditors.SimpleButton()
         Me.btn_ResetImage = New DevExpress.XtraEditors.SimpleButton()
         Me.pic_Photo = New System.Windows.Forms.PictureBox()
+        Me.panel_Footer = New DevExpress.XtraEditors.PanelControl()
+        Me.btn_Done = New DevExpress.XtraEditors.SimpleButton()
+        Me.dlg_SelectImage = New System.Windows.Forms.OpenFileDialog()
         Me.panel_Layout.SuspendLayout()
         CType(Me.gc_Medication, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gv_Medication, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -60,10 +61,10 @@ Partial Class frm_Patient
         CType(Me.txt_Doctor.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gc_Diseases, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gv_Diseases, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.panel_Footer, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.panel_Footer.SuspendLayout()
         Me.table_Photo.SuspendLayout()
         CType(Me.pic_Photo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.panel_Footer, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panel_Footer.SuspendLayout()
         Me.SuspendLayout()
         '
         'panel_Layout
@@ -106,10 +107,10 @@ Partial Class frm_Patient
         'gc_Medication
         '
         Me.gc_Medication.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.gc_Medication.Location = New System.Drawing.Point(70, 434)
+        Me.gc_Medication.Location = New System.Drawing.Point(70, 436)
         Me.gc_Medication.MainView = Me.gv_Medication
         Me.gc_Medication.Name = "gc_Medication"
-        Me.gc_Medication.Size = New System.Drawing.Size(483, 101)
+        Me.gc_Medication.Size = New System.Drawing.Size(483, 102)
         Me.gc_Medication.TabIndex = 17
         Me.gc_Medication.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gv_Medication})
         '
@@ -126,10 +127,10 @@ Partial Class frm_Patient
         'gc_Allergies
         '
         Me.gc_Allergies.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.gc_Allergies.Location = New System.Drawing.Point(70, 327)
+        Me.gc_Allergies.Location = New System.Drawing.Point(70, 328)
         Me.gc_Allergies.MainView = Me.gv_Allergies
         Me.gc_Allergies.Name = "gc_Allergies"
-        Me.gc_Allergies.Size = New System.Drawing.Size(483, 101)
+        Me.gc_Allergies.Size = New System.Drawing.Size(483, 102)
         Me.gc_Allergies.TabIndex = 16
         Me.gc_Allergies.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gv_Allergies})
         '
@@ -164,7 +165,7 @@ Partial Class frm_Patient
         Me.lbl_Diseases.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lbl_Diseases.Location = New System.Drawing.Point(3, 220)
         Me.lbl_Diseases.Name = "lbl_Diseases"
-        Me.lbl_Diseases.Size = New System.Drawing.Size(51, 101)
+        Me.lbl_Diseases.Size = New System.Drawing.Size(51, 102)
         Me.lbl_Diseases.TabIndex = 1
         Me.lbl_Diseases.Text = "Diseases"
         '
@@ -174,9 +175,9 @@ Partial Class frm_Patient
         Me.lbl_Allergies.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_Allergies.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top
         Me.lbl_Allergies.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbl_Allergies.Location = New System.Drawing.Point(3, 327)
+        Me.lbl_Allergies.Location = New System.Drawing.Point(3, 328)
         Me.lbl_Allergies.Name = "lbl_Allergies"
-        Me.lbl_Allergies.Size = New System.Drawing.Size(51, 101)
+        Me.lbl_Allergies.Size = New System.Drawing.Size(51, 102)
         Me.lbl_Allergies.TabIndex = 2
         Me.lbl_Allergies.Text = "Allergies"
         '
@@ -186,9 +187,9 @@ Partial Class frm_Patient
         Me.lbl_Medication.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_Medication.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top
         Me.lbl_Medication.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbl_Medication.Location = New System.Drawing.Point(3, 434)
+        Me.lbl_Medication.Location = New System.Drawing.Point(3, 436)
         Me.lbl_Medication.Name = "lbl_Medication"
-        Me.lbl_Medication.Size = New System.Drawing.Size(51, 101)
+        Me.lbl_Medication.Size = New System.Drawing.Size(51, 102)
         Me.lbl_Medication.TabIndex = 3
         Me.lbl_Medication.Text = "Medication"
         '
@@ -198,9 +199,9 @@ Partial Class frm_Patient
         Me.lbl_Doctor.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lbl_Doctor.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top
         Me.lbl_Doctor.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbl_Doctor.Location = New System.Drawing.Point(3, 541)
+        Me.lbl_Doctor.Location = New System.Drawing.Point(3, 544)
         Me.lbl_Doctor.Name = "lbl_Doctor"
-        Me.lbl_Doctor.Size = New System.Drawing.Size(51, 23)
+        Me.lbl_Doctor.Size = New System.Drawing.Size(51, 20)
         Me.lbl_Doctor.TabIndex = 4
         Me.lbl_Doctor.Text = "Doctor"
         '
@@ -224,7 +225,7 @@ Partial Class frm_Patient
         Me.lbl_Splitter_3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lbl_Splitter_3.Location = New System.Drawing.Point(60, 220)
         Me.lbl_Splitter_3.Name = "lbl_Splitter_3"
-        Me.lbl_Splitter_3.Size = New System.Drawing.Size(4, 101)
+        Me.lbl_Splitter_3.Size = New System.Drawing.Size(4, 102)
         Me.lbl_Splitter_3.TabIndex = 6
         Me.lbl_Splitter_3.Text = ":"
         '
@@ -234,9 +235,9 @@ Partial Class frm_Patient
         Me.lbl_Splitter_4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.lbl_Splitter_4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top
         Me.lbl_Splitter_4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbl_Splitter_4.Location = New System.Drawing.Point(60, 327)
+        Me.lbl_Splitter_4.Location = New System.Drawing.Point(60, 328)
         Me.lbl_Splitter_4.Name = "lbl_Splitter_4"
-        Me.lbl_Splitter_4.Size = New System.Drawing.Size(4, 101)
+        Me.lbl_Splitter_4.Size = New System.Drawing.Size(4, 102)
         Me.lbl_Splitter_4.TabIndex = 7
         Me.lbl_Splitter_4.Text = ":"
         '
@@ -246,9 +247,9 @@ Partial Class frm_Patient
         Me.lbl_Splitter_5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.lbl_Splitter_5.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top
         Me.lbl_Splitter_5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbl_Splitter_5.Location = New System.Drawing.Point(60, 434)
+        Me.lbl_Splitter_5.Location = New System.Drawing.Point(60, 436)
         Me.lbl_Splitter_5.Name = "lbl_Splitter_5"
-        Me.lbl_Splitter_5.Size = New System.Drawing.Size(4, 101)
+        Me.lbl_Splitter_5.Size = New System.Drawing.Size(4, 102)
         Me.lbl_Splitter_5.TabIndex = 8
         Me.lbl_Splitter_5.Text = ":"
         '
@@ -258,9 +259,9 @@ Partial Class frm_Patient
         Me.lbl_Splitter_6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.lbl_Splitter_6.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top
         Me.lbl_Splitter_6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lbl_Splitter_6.Location = New System.Drawing.Point(60, 541)
+        Me.lbl_Splitter_6.Location = New System.Drawing.Point(60, 544)
         Me.lbl_Splitter_6.Name = "lbl_Splitter_6"
-        Me.lbl_Splitter_6.Size = New System.Drawing.Size(4, 23)
+        Me.lbl_Splitter_6.Size = New System.Drawing.Size(4, 20)
         Me.lbl_Splitter_6.TabIndex = 9
         Me.lbl_Splitter_6.Text = ":"
         '
@@ -275,7 +276,7 @@ Partial Class frm_Patient
         'txt_Doctor
         '
         Me.txt_Doctor.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txt_Doctor.Location = New System.Drawing.Point(70, 541)
+        Me.txt_Doctor.Location = New System.Drawing.Point(70, 544)
         Me.txt_Doctor.Name = "txt_Doctor"
         Me.txt_Doctor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txt_Doctor.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
@@ -288,7 +289,7 @@ Partial Class frm_Patient
         Me.gc_Diseases.Location = New System.Drawing.Point(70, 220)
         Me.gc_Diseases.MainView = Me.gv_Diseases
         Me.gc_Diseases.Name = "gc_Diseases"
-        Me.gc_Diseases.Size = New System.Drawing.Size(483, 101)
+        Me.gc_Diseases.Size = New System.Drawing.Size(483, 102)
         Me.gc_Diseases.TabIndex = 15
         Me.gc_Diseases.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gv_Diseases})
         '
@@ -302,25 +303,6 @@ Partial Class frm_Patient
         Me.gv_Diseases.OptionsView.ShowColumnHeaders = False
         Me.gv_Diseases.OptionsView.ShowGroupedColumns = True
         Me.gv_Diseases.OptionsView.ShowGroupPanel = False
-        '
-        'panel_Footer
-        '
-        Me.panel_Footer.Controls.Add(Me.btn_Done)
-        Me.panel_Footer.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panel_Footer.Location = New System.Drawing.Point(0, 567)
-        Me.panel_Footer.Name = "panel_Footer"
-        Me.panel_Footer.Size = New System.Drawing.Size(556, 47)
-        Me.panel_Footer.TabIndex = 1
-        '
-        'btn_Done
-        '
-        Me.btn_Done.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_Done.ImageOptions.SvgImage = CType(resources.GetObject("btn_Done.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.btn_Done.Location = New System.Drawing.Point(465, 5)
-        Me.btn_Done.Name = "btn_Done"
-        Me.btn_Done.Size = New System.Drawing.Size(86, 37)
-        Me.btn_Done.TabIndex = 0
-        Me.btn_Done.Text = "Done"
         '
         'lbl_Photo
         '
@@ -401,10 +383,34 @@ Partial Class frm_Patient
         Me.pic_Photo.Location = New System.Drawing.Point(3, 3)
         Me.pic_Photo.Name = "pic_Photo"
         Me.pic_Photo.Size = New System.Drawing.Size(477, 144)
+        Me.pic_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pic_Photo.TabIndex = 3
         Me.pic_Photo.TabStop = False
         '
-        'frm_Patien1t
+        'panel_Footer
+        '
+        Me.panel_Footer.Controls.Add(Me.btn_Done)
+        Me.panel_Footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.panel_Footer.Location = New System.Drawing.Point(0, 567)
+        Me.panel_Footer.Name = "panel_Footer"
+        Me.panel_Footer.Size = New System.Drawing.Size(556, 47)
+        Me.panel_Footer.TabIndex = 1
+        '
+        'btn_Done
+        '
+        Me.btn_Done.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_Done.ImageOptions.SvgImage = CType(resources.GetObject("btn_Done.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Done.Location = New System.Drawing.Point(465, 5)
+        Me.btn_Done.Name = "btn_Done"
+        Me.btn_Done.Size = New System.Drawing.Size(86, 37)
+        Me.btn_Done.TabIndex = 0
+        Me.btn_Done.Text = "Done"
+        '
+        'dlg_SelectImage
+        '
+        Me.dlg_SelectImage.Filter = "All Supported Files|*.bmp;*.png;*.jpg;*.jpeg"
+        '
+        'frm_Patient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -412,7 +418,7 @@ Partial Class frm_Patient
         Me.Controls.Add(Me.panel_Layout)
         Me.Controls.Add(Me.panel_Footer)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "frm_Patien1t"
+        Me.Name = "frm_Patient"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Patient"
         Me.panel_Layout.ResumeLayout(False)
@@ -425,10 +431,10 @@ Partial Class frm_Patient
         CType(Me.txt_Doctor.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gc_Diseases, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gv_Diseases, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.panel_Footer, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.panel_Footer.ResumeLayout(False)
         Me.table_Photo.ResumeLayout(False)
         CType(Me.pic_Photo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.panel_Footer, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panel_Footer.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -461,4 +467,5 @@ Partial Class frm_Patient
     Friend WithEvents btn_SelectImage As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents btn_ResetImage As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents pic_Photo As PictureBox
+    Friend WithEvents dlg_SelectImage As OpenFileDialog
 End Class

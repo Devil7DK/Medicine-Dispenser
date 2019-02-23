@@ -26,8 +26,8 @@ Partial Class frm_Capture
         Me.image_PICBX = New System.Windows.Forms.PictureBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
+        Me.btn_Capture = New DevExpress.XtraEditors.SimpleButton()
+        Me.btn_OK = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.image_PICBX, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -51,8 +51,8 @@ Partial Class frm_Capture
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.PictureBox1, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.SimpleButton2, 0, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.SimpleButton3, 2, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.btn_Capture, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.btn_OK, 2, 1)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(466, 12)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
@@ -72,23 +72,24 @@ Partial Class frm_Capture
         Me.PictureBox1.TabIndex = 19
         Me.PictureBox1.TabStop = False
         '
-        'SimpleButton2
+        'btn_Capture
         '
-        Me.SimpleButton2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SimpleButton2.Location = New System.Drawing.Point(3, 273)
-        Me.SimpleButton2.Name = "SimpleButton2"
-        Me.SimpleButton2.Size = New System.Drawing.Size(68, 31)
-        Me.SimpleButton2.TabIndex = 21
-        Me.SimpleButton2.Text = "Capture"
+        Me.btn_Capture.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.btn_Capture.Location = New System.Drawing.Point(3, 273)
+        Me.btn_Capture.Name = "btn_Capture"
+        Me.btn_Capture.Size = New System.Drawing.Size(68, 31)
+        Me.btn_Capture.TabIndex = 21
+        Me.btn_Capture.Text = "Capture"
         '
-        'SimpleButton3
+        'btn_OK
         '
-        Me.SimpleButton3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SimpleButton3.Location = New System.Drawing.Point(144, 273)
-        Me.SimpleButton3.Name = "SimpleButton3"
-        Me.SimpleButton3.Size = New System.Drawing.Size(68, 31)
-        Me.SimpleButton3.TabIndex = 22
-        Me.SimpleButton3.Text = "OK"
+        Me.btn_OK.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.btn_OK.Enabled = False
+        Me.btn_OK.Location = New System.Drawing.Point(144, 273)
+        Me.btn_OK.Name = "btn_OK"
+        Me.btn_OK.Size = New System.Drawing.Size(68, 31)
+        Me.btn_OK.TabIndex = 22
+        Me.btn_OK.Text = "OK"
         '
         'frm_Capture
         '
@@ -114,6 +115,6 @@ Partial Class frm_Capture
     Private WithEvents image_PICBX As PictureBox
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents SimpleButton3 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btn_Capture As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents btn_OK As DevExpress.XtraEditors.SimpleButton
 End Class

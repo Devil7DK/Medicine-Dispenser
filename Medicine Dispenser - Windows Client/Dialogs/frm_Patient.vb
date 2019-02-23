@@ -97,6 +97,24 @@ Public Class frm_Patient
             DevExpress.XtraEditors.XtraMessageBox.Show("Error. Unknown Mode!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
+
+    Private Sub btn_CaptureImage_Click(sender As Object, e As EventArgs) Handles btn_CaptureImage.Click
+        Dim D As New frm_Capture
+        D.ShowDialog()
+        If D.CapturedImage IsNot Nothing Then
+            pic_Photo.Image = D.CapturedImage
+        End If
+    End Sub
+
+    Private Sub btn_SelectImage_Click(sender As Object, e As EventArgs) Handles btn_SelectImage.Click
+        If dlg_SelectImage.ShowDialog = DialogResult.OK Then
+            pic_Photo.Image = Image.FromFile(dlg_SelectImage.FileName)
+        End If
+    End Sub
+
+    Private Sub btn_ResetImage_Click(sender As Object, e As EventArgs) Handles btn_ResetImage.Click
+        pic_Photo.Image = My.Resources.patient
+    End Sub
 #End Region
 
 End Class
