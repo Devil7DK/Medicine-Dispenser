@@ -34,7 +34,7 @@ Namespace Database
             Return R
         End Function
 
-        Public Shared Function [New](ByVal Name As String, ByVal Diseases As BindingList(Of String), ByVal Allergies As BindingList(Of String), ByVal Medication As BindingList(Of Medication), ByVal Doctor As Doctor) As Patient
+        Public Shared Function [New](ByVal Name As String, ByVal Diseases As BindingList(Of String), ByVal Allergies As BindingList(Of String), ByVal Medication As BindingList(Of Medication), ByVal Doctor As Doctor, ByVal Photo As Image) As Patient
             Dim R As Patient = Nothing
             Dim Connection As MySqlConnection = GetConnection()
 
@@ -51,7 +51,7 @@ Namespace Database
 
                     Dim ID As Integer = Command.ExecuteScalar
                     If ID > 0 Then
-                        R = New Patient(ID, Name, Diseases, Allergies, Medication, Doctor)
+                        R = New Patient(ID, Name, Diseases, Allergies, Medication, Doctor, Photo)
                     Else
                         DevExpress.XtraEditors.XtraMessageBox.Show("Unknown error while inserting patient.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     End If
@@ -105,13 +105,14 @@ Namespace Database
             Dim Diseases As Byte() = Reader.Item("diseases")
             Dim Allergies As Byte() = Reader.Item("allergies")
             Dim Medication As Byte() = Reader.Item("medication")
+            Dim Photo As Byte() = Reader.Item("photo")
 
             Dim DoctorID As Integer = -1
             Dim Doctor As Doctor = Nothing
             If Doctors IsNot Nothing AndAlso Not String.IsNullOrEmpty(Reader.Item("doctor").ToString) AndAlso Integer.TryParse(Reader.Item("doctor").ToString, DoctorID) Then
                 Doctor = Doctors.Find(Function(c) c.ID = DoctorID)
             End If
-            Return New Patient(ID, Name, Diseases, Allergies, Medication, Doctor)
+            Return New Patient(ID, Name, Diseases, Allergies, Medication, Doctor, Photo)
         End Function
 #End Region
 
