@@ -104,6 +104,7 @@
     <Compile Include="Classes\Database\Patients.vb" />
     <Compile Include="Classes\Enums\Medicine.vb" />
     <Compile Include="Classes\Enums\Mode.vb" />
+    <Compile Include="Classes\Keys.vb" />
     <Compile Include="Classes\Objects\Doctor.vb" />
     <Compile Include="Classes\Objects\Medication.vb" />
     <Compile Include="Classes\Objects\Patient.vb" />
