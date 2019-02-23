@@ -58,11 +58,16 @@ Public Class frm_Patient
                     txt_Doctor.SelectedItem = Patient.Doctor
                 End If
             End If
+
+            If Patient.Photo IsNot Nothing Then
+                pic_Photo.Image = Patient.Photo
+            End If
         Else
             If txt_Doctor.Properties.Items.Count > 0 Then txt_Doctor.SelectedIndex = 0
             gc_Diseases.DataSource = New BindingList(Of String) With {.AllowNew = True, .AllowEdit = True, .AllowRemove = True}
             gc_Allergies.DataSource = New BindingList(Of String) With {.AllowNew = True, .AllowEdit = True, .AllowRemove = True}
             gc_Medication.DataSource = New BindingList(Of Objects.Medication) With {.AllowNew = True, .AllowEdit = True, .AllowRemove = True}
+            pic_Photo.Image = My.Resources.patient
         End If
     End Sub
 #End Region
@@ -70,14 +75,14 @@ Public Class frm_Patient
 #Region "Button Events"
     Private Sub btn_Done_Click(sender As Object, e As EventArgs) Handles btn_Done.Click
         If Mode = Enums.Mode.Add Then
-            Dim Patient As Objects.Patient = Database.Patients.[New](txt_Name.Text, gc_Diseases.DataSource, gc_Allergies.DataSource, gc_Medication.DataSource, txt_Doctor.SelectedItem)
+            Dim Patient As Objects.Patient = Database.Patients.[New](txt_Name.Text, gc_Diseases.DataSource, gc_Allergies.DataSource, gc_Medication.DataSource, txt_Doctor.SelectedItem, pic_Photo.Image)
             If Patient IsNot Nothing Then
                 Me.Patient = Patient
                 Me.DialogResult = DialogResult.OK
                 Me.Close()
             End If
         ElseIf Mode = Enums.Mode.Edit AndAlso Me.Patient IsNot Nothing Then
-            Dim Patient As New Objects.Patient(Me.Patient.ID, txt_Name.Text, CType(gc_Diseases.DataSource, BindingList(Of String)), CType(gc_Allergies.DataSource, BindingList(Of String)), CType(gc_Medication.DataSource, BindingList(Of Objects.Medication)), txt_Doctor.SelectedItem)
+            Dim Patient As New Objects.Patient(Me.Patient.ID, txt_Name.Text, CType(gc_Diseases.DataSource, BindingList(Of String)), CType(gc_Allergies.DataSource, BindingList(Of String)), CType(gc_Medication.DataSource, BindingList(Of Objects.Medication)), txt_Doctor.SelectedItem, pic_Photo.Image)
             If Database.Patients.Update(Patient) Then
                 Me.Patient.Name = txt_Name.Text
                 Me.Patient.Diseases = gc_Diseases.DataSource
