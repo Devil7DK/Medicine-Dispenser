@@ -105,7 +105,7 @@ Namespace Database
             Dim Diseases As Byte() = Reader.Item("diseases")
             Dim Allergies As Byte() = Reader.Item("allergies")
             Dim Medication As Byte() = Reader.Item("medication")
-            Dim Photo As Byte() = Reader.Item("photo")
+            Dim Photo As Byte() = If(IsDBNull(Reader.Item("photo")), Nothing, Reader.Item("photo"))
 
             Dim DoctorID As Integer = -1
             Dim Doctor As Doctor = Nothing
