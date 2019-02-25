@@ -31,6 +31,7 @@ Public Class frm_Patient
     Private Sub frm_Patient_Load(sender As Object, e As EventArgs) Handles Me.Load
         If Mode = Enums.Mode.Edit AndAlso Patient IsNot Nothing Then
             txt_Name.Text = Patient.Name
+            txt_PhoneticName.Text = Patient.PhoneticName
             With Patient.Diseases
                 .AllowNew = True
                 .AllowEdit = True
@@ -75,16 +76,17 @@ Public Class frm_Patient
 #Region "Button Events"
     Private Sub btn_Done_Click(sender As Object, e As EventArgs) Handles btn_Done.Click
         If Mode = Enums.Mode.Add Then
-            Dim Patient As Objects.Patient = Database.Patients.[New](txt_Name.Text, gc_Diseases.DataSource, gc_Allergies.DataSource, gc_Medication.DataSource, txt_Doctor.SelectedItem, pic_Photo.Image)
+            Dim Patient As Objects.Patient = Database.Patients.[New](txt_Name.Text, txt_PhoneticName.Text, gc_Diseases.DataSource, gc_Allergies.DataSource, gc_Medication.DataSource, txt_Doctor.SelectedItem, pic_Photo.Image)
             If Patient IsNot Nothing Then
                 Me.Patient = Patient
                 Me.DialogResult = DialogResult.OK
                 Me.Close()
             End If
         ElseIf Mode = Enums.Mode.Edit AndAlso Me.Patient IsNot Nothing Then
-            Dim Patient As New Objects.Patient(Me.Patient.ID, txt_Name.Text, CType(gc_Diseases.DataSource, BindingList(Of String)), CType(gc_Allergies.DataSource, BindingList(Of String)), CType(gc_Medication.DataSource, BindingList(Of Objects.Medication)), txt_Doctor.SelectedItem, pic_Photo.Image)
+            Dim Patient As New Objects.Patient(Me.Patient.ID, txt_Name.Text, txt_PhoneticName.Text, CType(gc_Diseases.DataSource, BindingList(Of String)), CType(gc_Allergies.DataSource, BindingList(Of String)), CType(gc_Medication.DataSource, BindingList(Of Objects.Medication)), txt_Doctor.SelectedItem, pic_Photo.Image)
             If Database.Patients.Update(Patient) Then
                 Me.Patient.Name = txt_Name.Text
+                Me.Patient.PhoneticName = txt_PhoneticName.Text
                 Me.Patient.Diseases = gc_Diseases.DataSource
                 Me.Patient.Allergies = gc_Allergies.DataSource
                 Me.Patient.Medication = gc_Medication.DataSource
@@ -114,6 +116,10 @@ Public Class frm_Patient
 
     Private Sub btn_ResetImage_Click(sender As Object, e As EventArgs) Handles btn_ResetImage.Click
         pic_Photo.Image = My.Resources.patient
+    End Sub
+
+    Private Sub btn_PhoneticName_Click(sender As Object, e As EventArgs) Handles btn_PhoneticName.Click
+        Speak(txt_PhoneticName.Text)
     End Sub
 #End Region
 
