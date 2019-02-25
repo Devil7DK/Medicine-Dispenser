@@ -6,6 +6,7 @@ Namespace Objects
 #Region "Properties/Fields"
         Property ID As Integer
         Property Name As String
+        Property PhoneticName As String
         Property Diseases As BindingList(Of String)
         Property Allergies As BindingList(Of String)
         Property Medication As BindingList(Of Medication)
@@ -14,9 +15,10 @@ Namespace Objects
 #End Region
 
 #Region "Constructors"
-        Sub New(ByVal ID As Integer, ByVal Name As String, ByVal Diseases As BindingList(Of String), ByVal Allergies As BindingList(Of String), ByVal Medication As BindingList(Of Medication), ByVal Doctor As Doctor, ByVal Photo As Image)
+        Sub New(ByVal ID As Integer, ByVal Name As String, ByVal PhoneticName As String, ByVal Diseases As BindingList(Of String), ByVal Allergies As BindingList(Of String), ByVal Medication As BindingList(Of Medication), ByVal Doctor As Doctor, ByVal Photo As Image)
             Me.ID = ID
             Me.Name = Name
+            Me.PhoneticName = PhoneticName
             Me.Diseases = Diseases
             Me.Allergies = Allergies
             Me.Medication = Medication
@@ -24,9 +26,10 @@ Namespace Objects
             Me.Photo = Photo
         End Sub
 
-        Sub New(ByVal ID As Integer, ByVal Name As String, ByVal Diseases As Byte(), ByVal Allergies As Byte(), ByVal Medication As Byte(), ByVal Doctor As Doctor, ByVal Photo As Byte())
+        Sub New(ByVal ID As Integer, ByVal Name As String, ByVal PhoneticName As String, ByVal Diseases As Byte(), ByVal Allergies As Byte(), ByVal Medication As Byte(), ByVal Doctor As Doctor, ByVal Photo As Byte())
             Me.ID = ID
             Me.Name = Name
+            Me.PhoneticName = PhoneticName
             Me.Doctor = Doctor
 
             If Diseases IsNot Nothing Then
