@@ -34,16 +34,17 @@ Namespace Database
             Return R
         End Function
 
-        Public Shared Function [New](ByVal Name As String, ByVal Diseases As BindingList(Of String), ByVal Allergies As BindingList(Of String), ByVal Medication As BindingList(Of Medication), ByVal Doctor As Doctor, ByVal Photo As Image) As Patient
+        Public Shared Function [New](ByVal Name As String, ByVal PhoneticName As String, ByVal Diseases As BindingList(Of String), ByVal Allergies As BindingList(Of String), ByVal Medication As BindingList(Of Medication), ByVal Doctor As Doctor, ByVal Photo As Image) As Patient
             Dim R As Patient = Nothing
             Dim Connection As MySqlConnection = GetConnection()
 
             Try
-                Dim CommandString As String = String.Format("INSERT INTO {0} (name,diseases,allergies,medication,doctor) VALUES(@name,@diseases,@allergies,@medication,@doctor);SELECT LAST_INSERT_ID();", TableName)
+                Dim CommandString As String = String.Format("INSERT INTO {0} (name,phonetic,diseases,allergies,medication,doctor) VALUES(@name,@phonetic,@diseases,@allergies,@medication,@doctor);SELECT LAST_INSERT_ID();", TableName)
                 If Connection.State = ConnectionState.Closed Then Connection.Open()
 
                 Using Command As New MySqlCommand(CommandString, Connection)
                     Command.Parameters.AddWithValue("@name", Name)
+                    Command.Parameters.AddWithValue("@phonetic", PhoneticName)
                     Command.Parameters.AddWithValue("@diseases", Utils.Serializer.ToZXML(Diseases))
                     Command.Parameters.AddWithValue("@allergies", Utils.Serializer.ToZXML(Allergies))
                     Command.Parameters.AddWithValue("@medication", Utils.Serializer.ToZXML(Medication))
@@ -51,7 +52,7 @@ Namespace Database
 
                     Dim ID As Integer = Command.ExecuteScalar
                     If ID > 0 Then
-                        R = New Patient(ID, Name, Diseases, Allergies, Medication, Doctor, Photo)
+                        R = New Patient(ID, Name, PhoneticName, Diseases, Allergies, Medication, Doctor, Photo)
                     Else
                         DevExpress.XtraEditors.XtraMessageBox.Show("Unknown error while inserting patient.", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     End If
@@ -68,12 +69,13 @@ Namespace Database
             Dim Connection As MySqlConnection = GetConnection()
 
             Try
-                Dim CommandString As String = String.Format("UPDATE {0} SET name=@name,diseases=@diseases,allergies=@allergies,medication=@medication,doctor=@doctor WHERE id=@id;", TableName)
+                Dim CommandString As String = String.Format("UPDATE {0} SET name=@name,phonetic=@phonetic,diseases=@diseases,allergies=@allergies,medication=@medication,doctor=@doctor WHERE id=@id;", TableName)
                 If Connection.State = ConnectionState.Closed Then Connection.Open()
 
                 Using Command As New MySqlCommand(CommandString, Connection)
                     Command.Parameters.AddWithValue("@id", UpdatedPatient.ID)
                     Command.Parameters.AddWithValue("@name", UpdatedPatient.Name)
+                    Command.Parameters.AddWithValue("@phonetic", UpdatedPatient.PhoneticName)
                     Command.Parameters.AddWithValue("@diseases", Utils.Serializer.ToZXML(UpdatedPatient.Diseases))
                     Command.Parameters.AddWithValue("@allergies", Utils.Serializer.ToZXML(UpdatedPatient.Allergies))
                     Command.Parameters.AddWithValue("@medication", Utils.Serializer.ToZXML(UpdatedPatient.Medication))
@@ -102,6 +104,7 @@ Namespace Database
         Private Shared Function Read(ByVal Reader As MySqlDataReader, ByVal Doctors As List(Of Doctor)) As Patient
             Dim ID As Integer = Reader.Item("id")
             Dim Name As String = Reader.Item("name").ToString
+            Dim PhoneticName As String = Reader.Item("phonetic").ToString
             Dim Diseases As Byte() = Reader.Item("diseases")
             Dim Allergies As Byte() = Reader.Item("allergies")
             Dim Medication As Byte() = Reader.Item("medication")
@@ -112,7 +115,7 @@ Namespace Database
             If Doctors IsNot Nothing AndAlso Not String.IsNullOrEmpty(Reader.Item("doctor").ToString) AndAlso Integer.TryParse(Reader.Item("doctor").ToString, DoctorID) Then
                 Doctor = Doctors.Find(Function(c) c.ID = DoctorID)
             End If
-            Return New Patient(ID, Name, Diseases, Allergies, Medication, Doctor, Photo)
+            Return New Patient(ID, Name, PhoneticName, Diseases, Allergies, Medication, Doctor, Photo)
         End Function
 #End Region
 
