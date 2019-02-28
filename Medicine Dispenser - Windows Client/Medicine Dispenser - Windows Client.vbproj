@@ -138,6 +138,12 @@
     <Compile Include="Dialogs\frm_Patient.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Dialogs\frm_SelectPatient.Designer.vb">
+      <DependentUpon>frm_SelectPatient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frm_SelectPatient.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Dialogs\frm_StringInputBox.Designer.vb">
       <DependentUpon>frm_StringInputBox.vb</DependentUpon>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frm_Patient.resx">
       <DependentUpon>frm_Patient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frm_SelectPatient.resx">
+      <DependentUpon>frm_SelectPatient.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frm_StringInputBox.resx">
       <DependentUpon>frm_StringInputBox.vb</DependentUpon>
