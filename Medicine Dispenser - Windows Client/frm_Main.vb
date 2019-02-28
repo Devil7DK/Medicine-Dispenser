@@ -216,6 +216,11 @@ Public Class frm_Main
             rpg_Patients.Visible = False
         End If
     End Sub
+
+    Private Sub btn_Dashboard_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Dashboard.ItemClick
+        Dim D As New frm_DispenserDashBoard(gc_Patients.DataSource)
+        D.ShowDialog()
+    End Sub
 #End Region
 
 End Class

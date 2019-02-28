@@ -28,10 +28,12 @@ Partial Class frm_Main
         Me.btn_Doctor_Add = New DevExpress.XtraBars.BarButtonItem()
         Me.btn_Doctor_Edit = New DevExpress.XtraBars.BarButtonItem()
         Me.btn_Doctor_Remove = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_Dashboard = New DevExpress.XtraBars.BarButtonItem()
         Me.rpg_Home = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.rpg_Data_Common = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpg_Patients = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpg_Doctors = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.rpg_Dashboard = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.tab_Main = New DevExpress.XtraTab.XtraTabControl()
         Me.tp_Patients = New DevExpress.XtraTab.XtraTabPage()
@@ -56,9 +58,9 @@ Partial Class frm_Main
         'RibbonControl
         '
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.btn_Refresh, Me.btn_Patients_Add, Me.btn_Patients_Edit, Me.btn_Patients_Remove, Me.btn_Doctor_Add, Me.btn_Doctor_Edit, Me.btn_Doctor_Remove})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.btn_Refresh, Me.btn_Patients_Add, Me.btn_Patients_Edit, Me.btn_Patients_Remove, Me.btn_Doctor_Add, Me.btn_Doctor_Edit, Me.btn_Doctor_Remove, Me.btn_Dashboard})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl.MaxItemId = 8
+        Me.RibbonControl.MaxItemId = 9
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rpg_Home})
         Me.RibbonControl.Size = New System.Drawing.Size(879, 143)
@@ -113,9 +115,16 @@ Partial Class frm_Main
         Me.btn_Doctor_Remove.ImageOptions.SvgImage = CType(resources.GetObject("btn_Doctor_Remove.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.btn_Doctor_Remove.Name = "btn_Doctor_Remove"
         '
+        'btn_Dashboard
+        '
+        Me.btn_Dashboard.Caption = "Start"
+        Me.btn_Dashboard.Id = 8
+        Me.btn_Dashboard.ImageOptions.SvgImage = CType(resources.GetObject("btn_Dashboard.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btn_Dashboard.Name = "btn_Dashboard"
+        '
         'rpg_Home
         '
-        Me.rpg_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Data_Common, Me.rpg_Patients, Me.rpg_Doctors})
+        Me.rpg_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Data_Common, Me.rpg_Patients, Me.rpg_Doctors, Me.rpg_Dashboard})
         Me.rpg_Home.Name = "rpg_Home"
         Me.rpg_Home.Text = "Home"
         '
@@ -144,6 +153,13 @@ Partial Class frm_Main
         Me.rpg_Doctors.ShowCaptionButton = False
         Me.rpg_Doctors.Text = "Doctors"
         Me.rpg_Doctors.Visible = False
+        '
+        'rpg_Dashboard
+        '
+        Me.rpg_Dashboard.ItemLinks.Add(Me.btn_Dashboard)
+        Me.rpg_Dashboard.Name = "rpg_Dashboard"
+        Me.rpg_Dashboard.ShowCaptionButton = False
+        Me.rpg_Dashboard.Text = "Dashboard"
         '
         'RibbonStatusBar
         '
@@ -280,4 +296,6 @@ Partial Class frm_Main
     Friend WithEvents btn_Doctor_Edit As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btn_Doctor_Remove As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents rpg_Doctors As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents btn_Dashboard As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents rpg_Dashboard As DevExpress.XtraBars.Ribbon.RibbonPageGroup
 End Class
