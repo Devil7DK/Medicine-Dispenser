@@ -179,6 +179,7 @@ Public Class frm_DispenserDashBoard
                     End If
 
                     If Patient IsNot Nothing AndAlso Not AnnouncedIDs.Contains(Patient.ID) AndAlso HasWaitingMedication(Patient) Then
+                        AnnouncedIDs.Add(Patient.ID)
                         Dim Message As String = String.Format("Hi {0}, Place your hand in dispenser to receive your medicine.", Patient.PhoneticName)
                         Speak(Message)
                     End If
