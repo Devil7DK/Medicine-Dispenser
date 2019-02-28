@@ -120,6 +120,12 @@
     <Compile Include="Dialogs\frm_Capture.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Dialogs\frm_DispenserDashboard.Designer.vb">
+      <DependentUpon>frm_DispenserDashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\frm_DispenserDashboard.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Dialogs\frm_Doctor.Designer.vb">
       <DependentUpon>frm_Doctor.vb</DependentUpon>
     </Compile>
@@ -184,6 +190,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Dialogs\frm_Capture.resx">
       <DependentUpon>frm_Capture.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\frm_DispenserDashBoard.resx">
+      <DependentUpon>frm_DispenserDashboard.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frm_Doctor.resx">
       <DependentUpon>frm_Doctor.vb</DependentUpon>
