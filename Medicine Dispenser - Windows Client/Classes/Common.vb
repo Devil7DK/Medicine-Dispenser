@@ -28,7 +28,7 @@
         Try
             SpeechSynthesizer.Rate = 0
             SpeechSynthesizer.Volume = 100
-            SpeechSynthesizer.SelectVoice(GetVoices(0))
+            'SpeechSynthesizer.SelectVoice(GetVoices(0))
             SpeechSynthesizer.Speak(Text)
             Return True
         Catch ex As Exception
