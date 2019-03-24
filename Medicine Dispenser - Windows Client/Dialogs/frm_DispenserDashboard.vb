@@ -10,7 +10,6 @@ Public Class frm_DispenserDashBoard
 
     Dim ClosingForm As Boolean = False
     Dim CameraHandle As Integer
-    Dim TrackerID As Integer = -1
 
     Dim Mouse_X As Integer = 0
     Dim Mouse_Y As Integer = 0
@@ -21,6 +20,7 @@ Public Class frm_DispenserDashBoard
     Dim OverlayHandle As IOverlaySplashScreenHandle
 
     Dim AnnouncedIDs As New List(Of Integer)
+    Dim CurrentPatientID As Integer = 0
 #End Region
 
 #Region "Properties"
@@ -121,6 +121,8 @@ Public Class frm_DispenserDashBoard
         btn_TrainingMode.Enabled = False
         ClosingForm = False
 
+        DispenserDevice.Start()
+
         Dim TrackerHandle As Integer = 0  ' Creating a Tracker
         If (FSDK.FSDKE_OK <> FSDK.LoadTrackerMemoryFromFile(TrackerHandle, TrackerMemoryFile)) Then ' try to load saved tracker state
             FSDK.CreateTracker(TrackerHandle) ' If could not be loaded, create a new tracker
@@ -172,10 +174,13 @@ Public Class frm_DispenserDashBoard
                     If (Result = FSDK.FSDKE_OK And PatientID > 0) Then ' Draw DetectedName
                         Patient = Patients.Find(Function(c) c.ID = PatientID)
                         If Patient IsNot Nothing Then
+                            Me.CurrentPatientID = PatientID
                             Dim Format As New StringFormat()
                             Format.Alignment = StringAlignment.Center
                             g.DrawString(Patient.Name, New Font("Arial", 16), New SolidBrush(System.Drawing.Color.LightGreen), FacePosition.xc, FaceTop + FaceWidth + 5, Format)
                         End If
+                    Else
+                        Me.CurrentPatientID = -1
                     End If
 
                     If Patient IsNot Nothing AndAlso Not AnnouncedIDs.Contains(Patient.ID) AndAlso HasWaitingMedication(Patient) Then
@@ -304,6 +309,12 @@ Public Class frm_DispenserDashBoard
                                           End Sub)
                                End If
 
+                               Dim Ports As New List(Of String)
+                               For Each SerialPort As String In My.Computer.Ports.SerialPortNames
+                                   Ports.Add(SerialPort)
+                               Next
+                               Invoke(Sub() CType(cmb_Ports.Edit, DevExpress.XtraEditors.Repository.RepositoryItemComboBox).Items.AddRange(Ports.ToArray))
+
                                PrepareList()
 
                            Catch ex As Exception
@@ -314,6 +325,23 @@ Public Class frm_DispenserDashBoard
                            End Try
                        End Sub)
         CloseProgressPanel(OverlayHandle)
+    End Sub
+
+    Private Sub DispenserDevice_HandPlaced(sender As Object, e As HandPlacedEventArgs) Handles DispenserDevice.HandPlaced
+        If e.isHandPlaced Then
+            lbl_Hand.ImageOptions.SvgImage = My.Resources.hand_green
+
+            Dim MedicationScheduler As MedicationScheduler = WaitingList.Find(Function(c) c.Patient.ID = CurrentPatientID)
+            If MedicationScheduler IsNot Nothing Then
+                For Each Medication As Medication In MedicationScheduler.Medications
+                    DispenserDevice.Dispense(Medication)
+                Next
+                WaitingList.Remove(MedicationScheduler)
+                gc_WaitingMedications.RefreshDataSource()
+            End If
+        Else
+            lbl_Hand.ImageOptions.SvgImage = My.Resources.hand_blue
+        End If
     End Sub
 #End Region
 

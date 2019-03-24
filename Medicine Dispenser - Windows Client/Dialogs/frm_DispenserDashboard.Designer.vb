@@ -27,39 +27,46 @@ Partial Class frm_DispenserDashBoard
         Me.Bar2 = New DevExpress.XtraBars.Bar()
         Me.btn_StartRecognition = New DevExpress.XtraBars.BarLargeButtonItem()
         Me.btn_TrainingMode = New DevExpress.XtraBars.BarToggleSwitchItem()
+        Me.cmb_Ports = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryItemComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.Bar3 = New DevExpress.XtraBars.Bar()
         Me.txt_Status = New DevExpress.XtraBars.BarStaticItem()
         Me.lbl_TrackerStatus = New DevExpress.XtraBars.BarStaticItem()
         Me.txt_TrackerStatus = New DevExpress.XtraBars.BarStaticItem()
+        Me.lbl_Hand = New DevExpress.XtraBars.BarStaticItem()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.RepositoryItemLookUpEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
         Me.SplitContainerControl1 = New DevExpress.XtraEditors.SplitContainerControl()
-        Me.Container_CamImageBox = New System.Windows.Forms.Panel()
-        Me.CamImageBox = New System.Windows.Forms.PictureBox()
+        Me.SplitContainerControl2 = New DevExpress.XtraEditors.SplitContainerControl()
         Me.grp_RemainingMedications = New DevExpress.XtraEditors.GroupControl()
         Me.gc_RemainingMedications = New DevExpress.XtraGrid.GridControl()
         Me.gv_RemainingMedications = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.SplitContainerControl2 = New DevExpress.XtraEditors.SplitContainerControl()
         Me.grp_WaitingMedications = New DevExpress.XtraEditors.GroupControl()
         Me.gc_WaitingMedications = New DevExpress.XtraGrid.GridControl()
         Me.gv_WaitingMedications = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.Container_CamImageBox = New System.Windows.Forms.Panel()
+        Me.CamImageBox = New System.Windows.Forms.PictureBox()
+        Me.DispenserDevice = New Medicine_Dispenser___Windows_Client.Components.DispenserDevice(Me.components)
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl1.SuspendLayout()
-        Me.Container_CamImageBox.SuspendLayout()
-        CType(Me.CamImageBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SplitContainerControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainerControl2.SuspendLayout()
         CType(Me.grp_RemainingMedications, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grp_RemainingMedications.SuspendLayout()
         CType(Me.gc_RemainingMedications, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gv_RemainingMedications, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SplitContainerControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SplitContainerControl2.SuspendLayout()
         CType(Me.grp_WaitingMedications, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grp_WaitingMedications.SuspendLayout()
         CType(Me.gc_WaitingMedications, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gv_WaitingMedications, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Container_CamImageBox.SuspendLayout()
+        CType(Me.CamImageBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BarManager1
@@ -70,9 +77,10 @@ Partial Class frm_DispenserDashBoard
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btn_StartRecognition, Me.btn_TrainingMode, Me.txt_Status, Me.lbl_TrackerStatus, Me.txt_TrackerStatus})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btn_StartRecognition, Me.btn_TrainingMode, Me.txt_Status, Me.lbl_TrackerStatus, Me.txt_TrackerStatus, Me.cmb_Ports, Me.lbl_Hand})
         Me.BarManager1.MainMenu = Me.Bar2
-        Me.BarManager1.MaxItemId = 12
+        Me.BarManager1.MaxItemId = 15
+        Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit1, Me.RepositoryItemComboBox1})
         Me.BarManager1.StatusBar = Me.Bar3
         '
         'Bar2
@@ -81,7 +89,7 @@ Partial Class frm_DispenserDashBoard
         Me.Bar2.DockCol = 0
         Me.Bar2.DockRow = 0
         Me.Bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.Bar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btn_StartRecognition), New DevExpress.XtraBars.LinkPersistInfo(Me.btn_TrainingMode)})
+        Me.Bar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btn_StartRecognition), New DevExpress.XtraBars.LinkPersistInfo(Me.btn_TrainingMode), New DevExpress.XtraBars.LinkPersistInfo(Me.cmb_Ports)})
         Me.Bar2.OptionsBar.MultiLine = True
         Me.Bar2.OptionsBar.UseWholeRow = True
         Me.Bar2.Text = "Main menu"
@@ -98,6 +106,21 @@ Partial Class frm_DispenserDashBoard
         Me.btn_TrainingMode.Id = 3
         Me.btn_TrainingMode.Name = "btn_TrainingMode"
         '
+        'cmb_Ports
+        '
+        Me.cmb_Ports.Caption = "COM Port"
+        Me.cmb_Ports.Edit = Me.RepositoryItemComboBox1
+        Me.cmb_Ports.EditWidth = 70
+        Me.cmb_Ports.Id = 13
+        Me.cmb_Ports.Name = "cmb_Ports"
+        Me.cmb_Ports.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'RepositoryItemComboBox1
+        '
+        Me.RepositoryItemComboBox1.AutoHeight = False
+        Me.RepositoryItemComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemComboBox1.Name = "RepositoryItemComboBox1"
+        '
         'Bar3
         '
         Me.Bar3.BarName = "Status bar"
@@ -105,7 +128,7 @@ Partial Class frm_DispenserDashBoard
         Me.Bar3.DockCol = 0
         Me.Bar3.DockRow = 0
         Me.Bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom
-        Me.Bar3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.txt_Status), New DevExpress.XtraBars.LinkPersistInfo(Me.lbl_TrackerStatus), New DevExpress.XtraBars.LinkPersistInfo(Me.txt_TrackerStatus)})
+        Me.Bar3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.txt_Status), New DevExpress.XtraBars.LinkPersistInfo(Me.lbl_TrackerStatus), New DevExpress.XtraBars.LinkPersistInfo(Me.txt_TrackerStatus), New DevExpress.XtraBars.LinkPersistInfo(Me.lbl_Hand)})
         Me.Bar3.OptionsBar.AllowQuickCustomization = False
         Me.Bar3.OptionsBar.DrawDragBorder = False
         Me.Bar3.OptionsBar.UseWholeRow = True
@@ -130,6 +153,14 @@ Partial Class frm_DispenserDashBoard
         Me.txt_TrackerStatus.Id = 6
         Me.txt_TrackerStatus.Name = "txt_TrackerStatus"
         '
+        'lbl_Hand
+        '
+        Me.lbl_Hand.Caption = "BarStaticItem1"
+        Me.lbl_Hand.Id = 14
+        Me.lbl_Hand.ImageOptions.SvgImage = Global.Medicine_Dispenser___Windows_Client.My.Resources.Resources.hand_blue
+        Me.lbl_Hand.Name = "lbl_Hand"
+        Me.lbl_Hand.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu
+        '
         'barDockControlTop
         '
         Me.barDockControlTop.CausesValidation = False
@@ -142,9 +173,9 @@ Partial Class frm_DispenserDashBoard
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 425)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 423)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(800, 25)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(800, 27)
         '
         'barDockControlLeft
         '
@@ -152,7 +183,7 @@ Partial Class frm_DispenserDashBoard
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 24)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 401)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 399)
         '
         'barDockControlRight
         '
@@ -160,7 +191,13 @@ Partial Class frm_DispenserDashBoard
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(800, 24)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 401)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 399)
+        '
+        'RepositoryItemLookUpEdit1
+        '
+        Me.RepositoryItemLookUpEdit1.AutoHeight = False
+        Me.RepositoryItemLookUpEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemLookUpEdit1.Name = "RepositoryItemLookUpEdit1"
         '
         'SplitContainerControl1
         '
@@ -172,29 +209,24 @@ Partial Class frm_DispenserDashBoard
         Me.SplitContainerControl1.Panel1.Text = "Panel1"
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.Container_CamImageBox)
         Me.SplitContainerControl1.Panel2.Text = "Panel2"
-        Me.SplitContainerControl1.Size = New System.Drawing.Size(800, 401)
+        Me.SplitContainerControl1.Size = New System.Drawing.Size(800, 399)
         Me.SplitContainerControl1.SplitterPosition = 345
         Me.SplitContainerControl1.TabIndex = 4
         '
-        'Container_CamImageBox
+        'SplitContainerControl2
         '
-        Me.Container_CamImageBox.AutoScroll = True
-        Me.Container_CamImageBox.Controls.Add(Me.CamImageBox)
-        Me.Container_CamImageBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Container_CamImageBox.Location = New System.Drawing.Point(0, 0)
-        Me.Container_CamImageBox.Name = "Container_CamImageBox"
-        Me.Container_CamImageBox.Size = New System.Drawing.Size(345, 401)
-        Me.Container_CamImageBox.TabIndex = 28
-        '
-        'CamImageBox
-        '
-        Me.CamImageBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.CamImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CamImageBox.Location = New System.Drawing.Point(3, 3)
-        Me.CamImageBox.Name = "CamImageBox"
-        Me.CamImageBox.Size = New System.Drawing.Size(357, 236)
-        Me.CamImageBox.TabIndex = 19
-        Me.CamImageBox.TabStop = False
+        Me.SplitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainerControl2.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.None
+        Me.SplitContainerControl2.Horizontal = False
+        Me.SplitContainerControl2.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainerControl2.Name = "SplitContainerControl2"
+        Me.SplitContainerControl2.Panel1.Controls.Add(Me.grp_RemainingMedications)
+        Me.SplitContainerControl2.Panel1.Text = "Panel1"
+        Me.SplitContainerControl2.Panel2.Controls.Add(Me.grp_WaitingMedications)
+        Me.SplitContainerControl2.Panel2.Text = "Panel2"
+        Me.SplitContainerControl2.Size = New System.Drawing.Size(450, 399)
+        Me.SplitContainerControl2.SplitterPosition = 201
+        Me.SplitContainerControl2.TabIndex = 1
         '
         'grp_RemainingMedications
         '
@@ -225,28 +257,13 @@ Partial Class frm_DispenserDashBoard
         Me.gv_RemainingMedications.OptionsBehavior.ReadOnly = True
         Me.gv_RemainingMedications.OptionsView.ShowGroupPanel = False
         '
-        'SplitContainerControl2
-        '
-        Me.SplitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainerControl2.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.None
-        Me.SplitContainerControl2.Horizontal = False
-        Me.SplitContainerControl2.Location = New System.Drawing.Point(0, 0)
-        Me.SplitContainerControl2.Name = "SplitContainerControl2"
-        Me.SplitContainerControl2.Panel1.Controls.Add(Me.grp_RemainingMedications)
-        Me.SplitContainerControl2.Panel1.Text = "Panel1"
-        Me.SplitContainerControl2.Panel2.Controls.Add(Me.grp_WaitingMedications)
-        Me.SplitContainerControl2.Panel2.Text = "Panel2"
-        Me.SplitContainerControl2.Size = New System.Drawing.Size(450, 401)
-        Me.SplitContainerControl2.SplitterPosition = 201
-        Me.SplitContainerControl2.TabIndex = 1
-        '
         'grp_WaitingMedications
         '
         Me.grp_WaitingMedications.Controls.Add(Me.gc_WaitingMedications)
         Me.grp_WaitingMedications.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grp_WaitingMedications.Location = New System.Drawing.Point(0, 0)
         Me.grp_WaitingMedications.Name = "grp_WaitingMedications"
-        Me.grp_WaitingMedications.Size = New System.Drawing.Size(450, 195)
+        Me.grp_WaitingMedications.Size = New System.Drawing.Size(450, 193)
         Me.grp_WaitingMedications.TabIndex = 1
         Me.grp_WaitingMedications.Text = "Waiting for Patient"
         '
@@ -257,7 +274,7 @@ Partial Class frm_DispenserDashBoard
         Me.gc_WaitingMedications.MainView = Me.gv_WaitingMedications
         Me.gc_WaitingMedications.MenuManager = Me.BarManager1
         Me.gc_WaitingMedications.Name = "gc_WaitingMedications"
-        Me.gc_WaitingMedications.Size = New System.Drawing.Size(446, 173)
+        Me.gc_WaitingMedications.Size = New System.Drawing.Size(446, 171)
         Me.gc_WaitingMedications.TabIndex = 0
         Me.gc_WaitingMedications.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.gv_WaitingMedications})
         '
@@ -268,6 +285,31 @@ Partial Class frm_DispenserDashBoard
         Me.gv_WaitingMedications.OptionsBehavior.Editable = False
         Me.gv_WaitingMedications.OptionsBehavior.ReadOnly = True
         Me.gv_WaitingMedications.OptionsView.ShowGroupPanel = False
+        '
+        'Container_CamImageBox
+        '
+        Me.Container_CamImageBox.AutoScroll = True
+        Me.Container_CamImageBox.Controls.Add(Me.CamImageBox)
+        Me.Container_CamImageBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Container_CamImageBox.Location = New System.Drawing.Point(0, 0)
+        Me.Container_CamImageBox.Name = "Container_CamImageBox"
+        Me.Container_CamImageBox.Size = New System.Drawing.Size(345, 399)
+        Me.Container_CamImageBox.TabIndex = 28
+        '
+        'CamImageBox
+        '
+        Me.CamImageBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.CamImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.CamImageBox.Location = New System.Drawing.Point(3, 3)
+        Me.CamImageBox.Name = "CamImageBox"
+        Me.CamImageBox.Size = New System.Drawing.Size(357, 236)
+        Me.CamImageBox.TabIndex = 19
+        Me.CamImageBox.TabStop = False
+        '
+        'DispenserDevice
+        '
+        Me.DispenserDevice.isHandPlaced = False
+        Me.DispenserDevice.PortName = "COM1"
         '
         'frm_DispenserDashBoard
         '
@@ -284,20 +326,22 @@ Partial Class frm_DispenserDashBoard
         Me.Text = "Dispenser Dashboard"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainerControl1.ResumeLayout(False)
-        Me.Container_CamImageBox.ResumeLayout(False)
-        CType(Me.CamImageBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SplitContainerControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainerControl2.ResumeLayout(False)
         CType(Me.grp_RemainingMedications, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grp_RemainingMedications.ResumeLayout(False)
         CType(Me.gc_RemainingMedications, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gv_RemainingMedications, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SplitContainerControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SplitContainerControl2.ResumeLayout(False)
         CType(Me.grp_WaitingMedications, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grp_WaitingMedications.ResumeLayout(False)
         CType(Me.gc_WaitingMedications, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gv_WaitingMedications, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Container_CamImageBox.ResumeLayout(False)
+        CType(Me.CamImageBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -325,4 +369,9 @@ Partial Class frm_DispenserDashBoard
     Friend WithEvents grp_WaitingMedications As DevExpress.XtraEditors.GroupControl
     Friend WithEvents gc_WaitingMedications As DevExpress.XtraGrid.GridControl
     Friend WithEvents gv_WaitingMedications As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents RepositoryItemLookUpEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
+    Friend WithEvents cmb_Ports As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents RepositoryItemComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
+    Friend WithEvents DispenserDevice As Components.DispenserDevice
+    Friend WithEvents lbl_Hand As DevExpress.XtraBars.BarStaticItem
 End Class
