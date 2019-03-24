@@ -108,6 +108,7 @@
     <Compile Include="Classes\Enums\ProgramStates.vb" />
     <Compile Include="Classes\Keys.vb" />
     <Compile Include="Classes\Objects\Doctor.vb" />
+    <Compile Include="Classes\Objects\HandPlacedEventArgs.vb" />
     <Compile Include="Classes\Objects\Medication.vb" />
     <Compile Include="Classes\Objects\MedicationScheduler.vb" />
     <Compile Include="Classes\Objects\Patient.vb" />
