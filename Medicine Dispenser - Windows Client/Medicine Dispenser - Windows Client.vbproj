@@ -239,5 +239,9 @@
   <ItemGroup>
     <None Include="Resources\patient.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\hand_blue.svg" />
+    <Content Include="Resources\hand_green.svg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
