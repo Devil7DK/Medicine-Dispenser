@@ -49,7 +49,7 @@ Partial Class frm_DispenserDashBoard
         Me.gv_WaitingMedications = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.Container_CamImageBox = New System.Windows.Forms.Panel()
         Me.CamImageBox = New System.Windows.Forms.PictureBox()
-        Me.DispenserDevice = New Medicine_Dispenser___Windows_Client.Components.DispenserDevice(Me.components)
+        Me.ArduinoPort = New System.IO.Ports.SerialPort(Me.components)
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -306,11 +306,6 @@ Partial Class frm_DispenserDashBoard
         Me.CamImageBox.TabIndex = 19
         Me.CamImageBox.TabStop = False
         '
-        'DispenserDevice
-        '
-        Me.DispenserDevice.isHandPlaced = False
-        Me.DispenserDevice.PortName = "COM1"
-        '
         'frm_DispenserDashBoard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -372,6 +367,6 @@ Partial Class frm_DispenserDashBoard
     Friend WithEvents RepositoryItemLookUpEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
     Friend WithEvents cmb_Ports As DevExpress.XtraBars.BarEditItem
     Friend WithEvents RepositoryItemComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
-    Friend WithEvents DispenserDevice As Components.DispenserDevice
     Friend WithEvents lbl_Hand As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents ArduinoPort As IO.Ports.SerialPort
 End Class

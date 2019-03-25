@@ -1,5 +1,5 @@
 ﻿Public Class Keys
 
-    Public Shared LuxandFaceSDK As String = "hxVuGehGdNwqOug2HJmV/TiExhzRffPLbvlVzmf+vE09+KB44l72UvcRn91rcK8mlwBiOwoc1bKoSYIjsFmVJRYNr0MAPoTXxAcLOaTXIXTiEVauhXiNrQyWwFF+V8F9s/QTAnvKdg6YrQJMAOdATb+lSsVP1wRLKFzwDVHoMFE="
+    Public Shared LuxandFaceSDK As String = "OPsgKGODhhsBtAwTTmxvSW68sX1ngKAOnidNdQGj+2SUqPtHsWh0ozIS25u4ORG01t60SDW8ZkPIX4huuExIxzpEB2cmYizYLXc3oTPOHtgnhd3yD9YqoM/qW0LrjZOZy2BbsKicmNFepYMjex8lwGC/gUXjXXtJ4EkY/WjBF+8="
 
 End Class

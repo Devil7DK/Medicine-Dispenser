@@ -100,12 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Common.vb" />
-    <Compile Include="Classes\Components\DispenserDevice.Designer.vb">
-      <DependentUpon>DispenserDevice.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Classes\Components\DispenserDevice.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Classes\Database\Common.vb" />
     <Compile Include="Classes\Database\Doctors.vb" />
     <Compile Include="Classes\Database\Patients.vb" />
@@ -114,7 +108,6 @@
     <Compile Include="Classes\Enums\ProgramStates.vb" />
     <Compile Include="Classes\Keys.vb" />
     <Compile Include="Classes\Objects\Doctor.vb" />
-    <Compile Include="Classes\Objects\HandPlacedEventArgs.vb" />
     <Compile Include="Classes\Objects\Medication.vb" />
     <Compile Include="Classes\Objects\MedicationScheduler.vb" />
     <Compile Include="Classes\Objects\Patient.vb" />
@@ -195,9 +188,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Classes\Components\DispenserDevice.resx">
-      <DependentUpon>DispenserDevice.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\frm_Capture.resx">
       <DependentUpon>frm_Capture.vb</DependentUpon>
     </EmbeddedResource>
@@ -252,6 +242,9 @@
   <ItemGroup>
     <Content Include="Resources\hand_blue.svg" />
     <Content Include="Resources\hand_green.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\Components\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿Imports DevExpress.XtraBars
+﻿Imports System.IO.Ports
+Imports DevExpress.XtraBars
 Imports DevExpress.XtraSplashScreen
 Imports Luxand
 Imports Medicine_Dispenser___Windows_Client.Objects
@@ -21,6 +22,8 @@ Public Class frm_DispenserDashBoard
 
     Dim AnnouncedIDs As New List(Of Integer)
     Dim CurrentPatientID As Integer = 0
+
+    Dim Dispensed As Boolean = False
 #End Region
 
 #Region "Properties"
@@ -113,6 +116,38 @@ Public Class frm_DispenserDashBoard
     Private Function HasWaitingMedication(ByVal Patient As Patient) As Boolean
         Return (WaitingList.Find(Function(c) c.Patient.ID = Patient.ID) IsNot Nothing)
     End Function
+
+    Function Dispense(ByVal Medications As List(Of Objects.Medication)) As Boolean
+        Try
+            Dim Timer As New Stopwatch
+
+            Dim A As Integer = 0
+            Dim B As Integer = 0
+            Dim C As Integer = 0
+
+            For Each Medication As Objects.Medication In Medications
+                Select Case Medication.Medicine
+                    Case Enums.Medicine.A
+                        A += Medication.Dosage
+                    Case Enums.Medicine.B
+                        B += Medication.Dosage
+                    Case Enums.Medicine.C
+                        C += Medication.Dosage
+                End Select
+            Next
+
+            ArduinoPort.WriteLine(String.Format("{0}:{1}:{2}", A, B, C))
+            Threading.Thread.Sleep(1000)
+            Timer.Start()
+            Dispensed = False
+            Do Until Dispensed Or Timer.Elapsed.TotalSeconds >= 30
+                Application.DoEvents()
+            Loop
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
 #End Region
 
 #Region "Button Events"
@@ -121,7 +156,8 @@ Public Class frm_DispenserDashBoard
         btn_TrainingMode.Enabled = False
         ClosingForm = False
 
-        DispenserDevice.Start()
+        ArduinoPort.PortName = cmb_Ports.EditValue
+        ArduinoPort.Open()
 
         Dim TrackerHandle As Integer = 0  ' Creating a Tracker
         If (FSDK.FSDKE_OK <> FSDK.LoadTrackerMemoryFromFile(TrackerHandle, TrackerMemoryFile)) Then ' try to load saved tracker state
@@ -260,9 +296,13 @@ Public Class frm_DispenserDashBoard
     End Sub
 
     Private Sub frm_DispenserDashBoard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        On Error Resume Next
         If ClosingForm Or btn_StartRecognition.Enabled Then
             FSDKCam.CloseVideoCamera(CameraHandle)
             FSDKCam.FinalizeCapturing()
+
+            'DispenserDevice.stop
+            If ArduinoPort.IsOpen Then ArduinoPort.Close()
         Else
             ClosingForm = True
             e.Cancel = True
@@ -327,20 +367,21 @@ Public Class frm_DispenserDashBoard
         CloseProgressPanel(OverlayHandle)
     End Sub
 
-    Private Sub DispenserDevice_HandPlaced(sender As Object, e As HandPlacedEventArgs) Handles DispenserDevice.HandPlaced
-        If e.isHandPlaced Then
+    Private Sub ArduinoPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles ArduinoPort.DataReceived
+        Dim Data As String = ArduinoPort.ReadExisting.Trim
+        If Data = "HP" Then
             lbl_Hand.ImageOptions.SvgImage = My.Resources.hand_green
 
             Dim MedicationScheduler As MedicationScheduler = WaitingList.Find(Function(c) c.Patient.ID = CurrentPatientID)
             If MedicationScheduler IsNot Nothing Then
-                For Each Medication As Medication In MedicationScheduler.Medications
-                    DispenserDevice.Dispense(Medication)
-                Next
+                Dispense(MedicationScheduler.Medications)
                 WaitingList.Remove(MedicationScheduler)
                 gc_WaitingMedications.RefreshDataSource()
             End If
-        Else
+        ElseIf Data = "HR" Then
             lbl_Hand.ImageOptions.SvgImage = My.Resources.hand_blue
+        ElseIf Data = "DS" Then
+            Dispensed = True
         End If
     End Sub
 #End Region
