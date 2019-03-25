@@ -2,7 +2,7 @@
 Imports DevExpress.XtraBars
 Imports DevExpress.XtraSplashScreen
 Imports Luxand
-Imports Medicine_Dispenser___Windows_Client.Objects
+Imports MedicineDispenser.Objects
 
 Public Class frm_DispenserDashBoard
 

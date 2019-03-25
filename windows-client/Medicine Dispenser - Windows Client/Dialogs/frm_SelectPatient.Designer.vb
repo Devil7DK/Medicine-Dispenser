@@ -22,6 +22,7 @@ Partial Class frm_SelectPatient
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_SelectPatient))
         Me.lbl_Patient = New DevExpress.XtraEditors.LabelControl()
         Me.cmb_Patient = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.btn_OK = New DevExpress.XtraEditors.SimpleButton()
@@ -62,6 +63,7 @@ Partial Class frm_SelectPatient
         Me.Controls.Add(Me.cmb_Patient)
         Me.Controls.Add(Me.lbl_Patient)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frm_SelectPatient"

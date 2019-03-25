@@ -256,10 +256,11 @@ Partial Class frm_Main
         Me.Controls.Add(Me.tab_Main)
         Me.Controls.Add(Me.RibbonStatusBar)
         Me.Controls.Add(Me.RibbonControl)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frm_Main"
         Me.Ribbon = Me.RibbonControl
         Me.StatusBar = Me.RibbonStatusBar
-        Me.Text = "frm_Main"
+        Me.Text = "Medicine Dispenser"
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tab_Main, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tab_Main.ResumeLayout(False)

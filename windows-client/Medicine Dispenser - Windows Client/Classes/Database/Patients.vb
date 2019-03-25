@@ -1,5 +1,5 @@
 ﻿Imports System.ComponentModel
-Imports Medicine_Dispenser___Windows_Client.Objects
+Imports MedicineDispenser.Objects
 Imports MySql.Data.MySqlClient
 
 Namespace Database

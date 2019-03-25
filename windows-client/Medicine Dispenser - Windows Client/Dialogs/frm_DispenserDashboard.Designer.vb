@@ -23,6 +23,7 @@ Partial Class frm_DispenserDashBoard
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_DispenserDashBoard))
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.Bar2 = New DevExpress.XtraBars.Bar()
         Me.btn_StartRecognition = New DevExpress.XtraBars.BarLargeButtonItem()
@@ -157,7 +158,7 @@ Partial Class frm_DispenserDashBoard
         '
         Me.lbl_Hand.Caption = "BarStaticItem1"
         Me.lbl_Hand.Id = 14
-        Me.lbl_Hand.ImageOptions.SvgImage = Global.Medicine_Dispenser___Windows_Client.My.Resources.Resources.hand_blue
+        Me.lbl_Hand.ImageOptions.SvgImage = Global.MedicineDispenser.My.Resources.Resources.hand_blue
         Me.lbl_Hand.Name = "lbl_Hand"
         Me.lbl_Hand.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu
         '
@@ -306,6 +307,9 @@ Partial Class frm_DispenserDashBoard
         Me.CamImageBox.TabIndex = 19
         Me.CamImageBox.TabStop = False
         '
+        'ArduinoPort
+        '
+        '
         'frm_DispenserDashBoard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -316,6 +320,7 @@ Partial Class frm_DispenserDashBoard
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frm_DispenserDashBoard"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Dispenser Dashboard"
