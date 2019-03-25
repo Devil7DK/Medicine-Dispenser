@@ -222,7 +222,7 @@ Public Class frm_DispenserDashBoard
                     If Patient IsNot Nothing AndAlso Not AnnouncedIDs.Contains(Patient.ID) AndAlso HasWaitingMedication(Patient) Then
                         AnnouncedIDs.Add(Patient.ID)
                         Dim Message As String = String.Format("Hi {0}, Place your hand in dispenser to receive your medicine.", Patient.PhoneticName)
-                        Speak(Message)
+                        Speak(Message, True)
                     End If
 
                     Dim pen As Pen = Pens.LightGreen
@@ -263,8 +263,8 @@ Public Class frm_DispenserDashBoard
             RemainingList.Remove(MedicationScheduler)
             WaitingList.Add(MedicationScheduler)
 
-            Dim Message As String = String.Format("Alert, Its Time for {0} to take his tablets", MedicationScheduler.Patient.PhoneticName)
-            Speak(Message)
+            Dim Message As String = String.Format("Alert, Its Time for {0} to take tablets", MedicationScheduler.Patient.PhoneticName)
+            Speak(Message, True)
             If AnnouncedIDs.Contains(MedicationScheduler.Patient.ID) Then AnnouncedIDs.Remove(MedicationScheduler.Patient.Name)
 
             gc_RemainingMedications.RefreshDataSource()

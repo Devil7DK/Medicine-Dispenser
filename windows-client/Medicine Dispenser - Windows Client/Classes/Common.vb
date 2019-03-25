@@ -24,12 +24,15 @@
         End Select
     End Function
 
-    Function Speak(ByVal Text As String) As Boolean
+    Function Speak(ByVal Text As String, ByVal Async As Boolean) As Boolean
         Try
             SpeechSynthesizer.Rate = 0
             SpeechSynthesizer.Volume = 100
-            'SpeechSynthesizer.SelectVoice(GetVoices(0))
-            SpeechSynthesizer.Speak(Text)
+            If Async Then
+                SpeechSynthesizer.SpeakAsync(Text)
+            Else
+                SpeechSynthesizer.Speak(Text)
+            End If
             Return True
         Catch ex As Exception
             Return False

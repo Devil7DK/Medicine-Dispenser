@@ -119,7 +119,7 @@ Public Class frm_Patient
     End Sub
 
     Private Sub btn_PhoneticName_Click(sender As Object, e As EventArgs) Handles btn_PhoneticName.Click
-        Speak(txt_PhoneticName.Text)
+        Speak(txt_PhoneticName.Text, False)
     End Sub
 #End Region
 
