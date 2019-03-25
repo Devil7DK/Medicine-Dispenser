@@ -136,9 +136,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.Medicine_Dispenser___Windows_Client.My.MySettings
+        Friend ReadOnly Property Settings() As Global.MedicineDispenser.My.MySettings
             Get
-                Return Global.Medicine_Dispenser___Windows_Client.My.MySettings.Default
+                Return Global.MedicineDispenser.My.MySettings.Default
             End Get
         End Property
     End Module

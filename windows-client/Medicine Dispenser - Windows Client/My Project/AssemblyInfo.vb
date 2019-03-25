@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("Medicine Dispenser - Windows Client")>
-<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyDescription("Front-end desktop application for Medicine Dispenser")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("Medicine Dispenser - Windows Client")>
 <Assembly: AssemblyCopyright("Copyright ©  2019")>

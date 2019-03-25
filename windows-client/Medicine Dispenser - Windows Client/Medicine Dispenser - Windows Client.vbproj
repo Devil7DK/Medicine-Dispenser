@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3B86D3EF-2E99-4AC3-9A18-B87CF49BF438}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Medicine_Dispenser___Windows_Client.My.MyApplication</StartupObject>
-    <RootNamespace>Medicine_Dispenser___Windows_Client</RootNamespace>
+    <StartupObject>MedicineDispenser.My.MyApplication</StartupObject>
+    <RootNamespace>MedicineDispenser</RootNamespace>
     <AssemblyName>Medicine Dispenser - Windows Client</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
@@ -46,6 +46,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -240,6 +243,7 @@
     <None Include="Resources\patient.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icon.ico" />
     <Content Include="Resources\hand_blue.svg" />
     <Content Include="Resources\hand_green.svg" />
   </ItemGroup>
