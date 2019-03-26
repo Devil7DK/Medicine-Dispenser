@@ -22,9 +22,8 @@ Partial Class frm_DispenserDashBoard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_DispenserDashBoard))
-        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.BarManager1 = New DevExpress.XtraBars.BarManager()
         Me.Bar2 = New DevExpress.XtraBars.Bar()
         Me.btn_StartRecognition = New DevExpress.XtraBars.BarLargeButtonItem()
         Me.btn_TrainingMode = New DevExpress.XtraBars.BarToggleSwitchItem()
@@ -50,7 +49,8 @@ Partial Class frm_DispenserDashBoard
         Me.gv_WaitingMedications = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.Container_CamImageBox = New System.Windows.Forms.Panel()
         Me.CamImageBox = New System.Windows.Forms.PictureBox()
-        Me.ArduinoPort = New System.IO.Ports.SerialPort(Me.components)
+        Me.ArduinoPort = New System.IO.Ports.SerialPort()
+        Me.btn_DispenseWithoutHand = New DevExpress.XtraBars.BarToggleSwitchItem()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,9 +78,9 @@ Partial Class frm_DispenserDashBoard
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btn_StartRecognition, Me.btn_TrainingMode, Me.txt_Status, Me.lbl_TrackerStatus, Me.txt_TrackerStatus, Me.cmb_Ports, Me.lbl_Hand})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.btn_StartRecognition, Me.btn_TrainingMode, Me.txt_Status, Me.lbl_TrackerStatus, Me.txt_TrackerStatus, Me.cmb_Ports, Me.lbl_Hand, Me.btn_DispenseWithoutHand})
         Me.BarManager1.MainMenu = Me.Bar2
-        Me.BarManager1.MaxItemId = 15
+        Me.BarManager1.MaxItemId = 17
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit1, Me.RepositoryItemComboBox1})
         Me.BarManager1.StatusBar = Me.Bar3
         '
@@ -90,7 +90,7 @@ Partial Class frm_DispenserDashBoard
         Me.Bar2.DockCol = 0
         Me.Bar2.DockRow = 0
         Me.Bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.Bar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btn_StartRecognition), New DevExpress.XtraBars.LinkPersistInfo(Me.btn_TrainingMode), New DevExpress.XtraBars.LinkPersistInfo(Me.cmb_Ports)})
+        Me.Bar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.btn_StartRecognition), New DevExpress.XtraBars.LinkPersistInfo(Me.btn_TrainingMode), New DevExpress.XtraBars.LinkPersistInfo(Me.cmb_Ports), New DevExpress.XtraBars.LinkPersistInfo(Me.btn_DispenseWithoutHand, True)})
         Me.Bar2.OptionsBar.MultiLine = True
         Me.Bar2.OptionsBar.UseWholeRow = True
         Me.Bar2.Text = "Main menu"
@@ -310,6 +310,12 @@ Partial Class frm_DispenserDashBoard
         'ArduinoPort
         '
         '
+        'btn_DispenseWithoutHand
+        '
+        Me.btn_DispenseWithoutHand.Caption = "Dispense Without Hand"
+        Me.btn_DispenseWithoutHand.Id = 16
+        Me.btn_DispenseWithoutHand.Name = "btn_DispenseWithoutHand"
+        '
         'frm_DispenserDashBoard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -374,4 +380,5 @@ Partial Class frm_DispenserDashBoard
     Friend WithEvents RepositoryItemComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
     Friend WithEvents lbl_Hand As DevExpress.XtraBars.BarStaticItem
     Friend WithEvents ArduinoPort As IO.Ports.SerialPort
+    Friend WithEvents btn_DispenseWithoutHand As DevExpress.XtraBars.BarToggleSwitchItem
 End Class

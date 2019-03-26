@@ -24,6 +24,7 @@ Public Class frm_DispenserDashBoard
     Dim CurrentPatientID As Integer = 0
 
     Dim Dispensed As Boolean = False
+    Dim ThreadedMedications As New List(Of String)
 #End Region
 
 #Region "Properties"
@@ -223,6 +224,25 @@ Public Class frm_DispenserDashBoard
                         AnnouncedIDs.Add(Patient.ID)
                         Dim Message As String = String.Format("Hi {0}, Place your hand in dispenser to receive your medicine.", Patient.PhoneticName)
                         Speak(Message, True)
+
+                        If btn_DispenseWithoutHand.Checked Then
+                            Dim MedicationScheduler As MedicationScheduler = WaitingList.Find(Function(c) c.Patient.ID = CurrentPatientID)
+                            If MedicationScheduler IsNot Nothing Then
+                                Dim Str As String = String.Format("{0}_{1}", MedicationScheduler.AlertTime.ToString("ddMMyyyyhhmm"), MedicationScheduler.Patient.ID)
+                                If Not ThreadedMedications.Contains(Str) Then
+                                    ThreadedMedications.Add(Str)
+                                    Dim T As New Threading.Thread(Sub()
+                                                                      Threading.Thread.Sleep(2000)
+                                                                      Invoke(Sub()
+                                                                                 WaitingList.Remove(MedicationScheduler)
+                                                                                 gc_WaitingMedications.RefreshDataSource()
+                                                                                 Dispense(MedicationScheduler.Medications)
+                                                                             End Sub)
+                                                                  End Sub)
+                                    T.Start()
+                                End If
+                            End If
+                        End If
                     End If
 
                     Dim pen As Pen = Pens.LightGreen
@@ -372,11 +392,13 @@ Public Class frm_DispenserDashBoard
         If Data = "HP" Then
             lbl_Hand.ImageOptions.SvgImage = My.Resources.hand_green
 
-            Dim MedicationScheduler As MedicationScheduler = WaitingList.Find(Function(c) c.Patient.ID = CurrentPatientID)
-            If MedicationScheduler IsNot Nothing Then
-                Dispense(MedicationScheduler.Medications)
-                WaitingList.Remove(MedicationScheduler)
-                gc_WaitingMedications.RefreshDataSource()
+            If Not btn_DispenseWithoutHand.Checked Then
+                Dim MedicationScheduler As MedicationScheduler = WaitingList.Find(Function(c) c.Patient.ID = CurrentPatientID)
+                If MedicationScheduler IsNot Nothing Then
+                    Dispense(MedicationScheduler.Medications)
+                    WaitingList.Remove(MedicationScheduler)
+                    gc_WaitingMedications.RefreshDataSource()
+                End If
             End If
         ElseIf Data = "HR" Then
             lbl_Hand.ImageOptions.SvgImage = My.Resources.hand_blue
